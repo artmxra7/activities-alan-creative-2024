@@ -16,6 +16,8 @@ Tugas dikumpulkan harian.
   
 
 - 💪 Membuat Halaman Website Sederhana Menggunakan ReactJs
+- Challenge(s):
+    - :rocket: [Membuat Halaman HTML Sederhana](/week-1/challenges/web-pertamaku.md)
 
   
 
