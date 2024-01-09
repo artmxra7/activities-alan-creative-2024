@@ -11,13 +11,13 @@ title:  'Komponen Slider'
 
 # Komponen Slider
 
-(assets/h0-w2-slider.png)
+![Header](assets/h0-w2-slider.png)
 
   
 
 ## Objectives
 
-Buatlah kompenan seperti gambar di atas
+Buatlah komponen seperti gambar di atas
 
   
 
