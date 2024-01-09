@@ -48,9 +48,9 @@ telah punya website kamu sendiri secara online!
 
 Tugas :
 
-- 💪 Membuat Komponen Banner Slider
+- 💪 [Membuat Komponen Banner Slider](/week-1/challenges/komponen-slider.md)
 
-- 💪 Membuat Membuat Menu Navigasi
+- 💪 [Membuat Membuat Menu Navigasi](/week-1/challenges/menu-navigasi.md)
 
 -  TBD
 
