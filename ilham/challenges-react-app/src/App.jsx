@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes,Route } from "react-router-dom";
 import Home from "./pages/home";
 import Formp from "./pages/form";
-
+import Table from "./pages/absen";
 import React from "react";
 
 const App = () => {
@@ -11,6 +11,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home/>}></Route>
           <Route path="/form" element={<Formp />}></Route>
+          <Route path="/absen" element={<Table />}></Route>
         </Routes>
       </Router>
     </div>

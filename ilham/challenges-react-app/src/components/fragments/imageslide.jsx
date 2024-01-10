@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 const PrevArrow = (props) => (
-    <button {...props} className="absolute top-1/2 left-10 transform -translate-y-1/2 bg-black text-white p-2 rounded-full">
+    <button {...props} className="absolute top-1/2 left-6 transform -translate-y-1/2 bg-black text-white p-2 rounded-full">
       back
     </button>
   );
