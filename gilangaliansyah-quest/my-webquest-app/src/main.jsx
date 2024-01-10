@@ -5,6 +5,7 @@ import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Login from './page/loginpage.jsx'
 import Register from './page/registerpage.jsx'
+import Coba from './page/Coba.jsx'
 
 const router = createBrowserRouter([
 {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
     {
       path: "/Register",
       element: <Register/>
+    },
+    {
+      path: "/Coba",
+      element: <Coba/>
     }
   ]
 }
