@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./fragments/navbar";
-import Footer from "./fragments/footer";
 import ImageSlider from "./fragments/imageslide";
+import Navigation from "./fragments/butnav";
 
 const First = () => {
   return (
@@ -10,14 +10,14 @@ const First = () => {
         <Navbar />
       </div>
   <div>
-    <ImageSlider/>
-  </div>
-      <div className="flex-1 flex flex-col items-center">
-        <h1 className="text-4xl font-mono font-bold mt-4 text-white">
+  <h1 className="text-4xl font-mono font-bold mt-4 text-white">
           Selamat datang di Learnsite😁
         </h1>
+    <ImageSlider/>
+  </div>
+      <div className="flex-1 flex flex-col items-center justify-end">
+      <Navigation/>
       </div>
-      <Footer />
     </div>
   );
 };
