@@ -76,4 +76,36 @@ class UserController extends Controller
             return response()->json(401);
         }
     }
+
+    function UploadImageProfile(Request $request, String $token){
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+
+        $freshData = base64_decode($token);
+        $email = json_decode($freshData)->email;
+
+        $find = User::where('email', $email)->first();
+
+        try{
+            if($request->hasFile('image')){
+                $image = $request->file('image');
+                $filename = time() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('images'), $filename);
+
+                $tryUpdate = $find->update([
+                    'gambar' => $filename
+                ]);
+                
+                if($tryUpdate){
+                    return response()->json(200);
+                }else{
+                    return response()->json(401);
+                }
+            }
+        }catch(\Exception $e){
+            return response()->json(401);
+        }
+
+    }
 }

@@ -5,7 +5,7 @@ import { RiMessage2Line } from "react-icons/ri"
 
 const Footer = () => {
     return(
-        <footer className="bg-gray-800 text-white p-6 w-full">
+        <footer className="bg-gray-800 text-white p-6 w-full" style={{marginBottom: "70px"}}>
             <div className="w-3/4 container mx-auto flex justify-between items-center">
                 <Link to="/" className='text-3xl font-bold' style={{ fontFamily: 'Montserrat' }}>Toko</Link>
             </div>

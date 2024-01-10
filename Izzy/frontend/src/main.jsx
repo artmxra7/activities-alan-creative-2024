@@ -8,12 +8,16 @@ import Register from './pages/Register.jsx'
 import Login from './pages/Login.jsx'
 import Cart from './pages/Cart.jsx'
 import Profile from './pages/Profile.jsx'
+import AudioPages from './pages/HomeChildrenPages/AudioPages.jsx'
+import MonitorPages from './pages/HomeChildrenPages/MonitorPages.jsx'
+import ErrorPages from './pages/ErrorPages.jsx'
+import PCComponentPages from './pages/HomeChildrenPages/PCComponent.jsx'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    // errorElement: <div>Error</div>,
+    // errorElement: <ErrorPages />,
     children: [
       {
         path: '/Cart',
@@ -22,13 +26,45 @@ const router = createBrowserRouter([
       {
         path: '/Profile',
         element: <Profile />,
+      },
+      {
+        path: '/*',
+        element: <App />,
+        children: [
+          {
+            path: '/*/Audio',
+            element: <AudioPages />,
+          },
+          {
+            path: '/*/Monitor',
+            element: <MonitorPages />,
+          },
+          {
+            path: '/*/PCComponent',
+            element: <PCComponentPages />,
+          }
+        ]
       }
     ]
   },
-  {
-    path: '/Home',
-    element: <Home />,
-  },
+  // {
+  //   path: '/Home',
+  //   element: <Home />,
+  //   children: [
+  //     {
+  //       path: '/Home/Audio',
+  //       element: <AudioPages />,
+  //     },
+  //     {
+  //       path: '/Home/Monitor',
+  //       element: <MonitorPages />,
+  //     },
+  //     {
+  //       path: '/Home/PCComponent',
+  //       element: <PCComponentPages />,
+  //     }
+  //   ]
+  // },
   {
     path: '/Login',
     element: <Login />,
