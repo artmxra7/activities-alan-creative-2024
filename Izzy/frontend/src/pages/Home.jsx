@@ -12,13 +12,16 @@ import '../Styles/HomeStyle.css';
 import HeaderMobile from '../elements/HeaderMobile';
 
 const Home = () => {
-    const [ButtonIndex, setButtonIndex] = useState(0);  
+    const [ButtonIndex, setButtonIndex] = useState(() => {
+        const savedIndex = sessionStorage.getItem('buttonIndex');
+        return savedIndex !== null ? JSON.parse(savedIndex) : 0;
+    });  
     const [width, setWidth] = useState(window.innerWidth);
     const navigate = useNavigate();
 
     const handleClick = (index) => {
         const paths = ['/*/Audio', '/*/Monitor', '/*/PCComponent'];
-        navigate(paths[index]);
+        navigate(paths[index]); 
     }
 
     const handleWindowSizeChange = () => {
@@ -26,12 +29,15 @@ const Home = () => {
     }
 
     useEffect(() => {
+        document.title = 'Beranda';
         window.addEventListener('resize', handleWindowSizeChange);
+        sessionStorage.setItem('buttonIndex', JSON.stringify(ButtonIndex));
+        handleClick(ButtonIndex);
 
         return () => {
             window.removeEventListener('resize', handleWindowSizeChange);
         }
-    }, []);
+    }, [ButtonIndex]);
 
     const isMobile = width <= 768;
         
@@ -60,7 +66,6 @@ const Home = () => {
                         </Routes>
                     </div>
                 </div>
-                <Footer/>
                 {isMobile && (
                  <div className='bg-white fixed w-full z-20 bottom-0 start-0 border-gray-200 dark:border-gray-600 shadow-md'>
                     <div className="max-w-screen-xl flex flex-wrap items-center justify-center mx-auto">
@@ -74,6 +79,7 @@ const Home = () => {
                     </div>
                  </div>   
                 )}
+                <Footer/>
             </div>
     )
 }

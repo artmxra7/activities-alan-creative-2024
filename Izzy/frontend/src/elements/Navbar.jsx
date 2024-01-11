@@ -1,40 +1,61 @@
 import { useState, useEffect } from 'react';
 import { IoMdCart } from "react-icons/io";
-import { IoSearchOutline } from "react-icons/io5";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import api from '../api';
+import { debounce } from 'lodash';
 
-
-const Profile = async (setLoginStat, setDatUser) => {
+const Profile = debounce(async (setLoginStat, setDatUser, setLoading) => {
     try{
         const token = localStorage.getItem('token')
-
-        if(token != null){
-        const response = await api.get('/profile/'+token)
-        if(response.data == 401){
-            setLoginStat(false)
-        }else{
+        setLoading(true)
+        if(token != null && token != undefined && token.length > 0){
+        const response = await api.get('/NavProfile/'+token)
+        if(response.status === 200){
             setLoginStat(true)
-            setDatUser(response.data)
+            setLoading(false)
+            setDatUser({
+                namauser: response.data.namauser,
+                gambar: response.data.gambar,
+                previewGambar: `http://localhost:8000/images/${response.data.gambar}`
+            })
+        }else{
+            setLoginStat(false)
+            setLoading(false)
         }
         }else{
+            setLoading(false)
             setLoginStat(false)
         }
     }catch(err){
-        console.log(err)
+        if(err.response.status === 401 || err.response.status === 500){
+            setLoginStat(false)
+            setLoading(false)
+        }
     }
-}
+}, 300);
 
 const Navbar = () => {
     const [LoginStat, setLoginStat] = useState(false);
     const [openLoginModal, setOpenLoginModal] = useState(false);
     const [ErrorLogin, setErrorLogin] = useState(false)
-    const [DatUser, setDatUser] = useState(null); 
+    const [DatUser, setDatUser] = useState({namauser: '', gambar: '', previewGambar: ''}); 
     const [isMenuOpen, setMenuOpen] = useState(false);
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
+
+    const LinkTo = () => {
+        const ButtonIndex = sessionStorage.getItem('buttonIndex')
+        if (ButtonIndex == 0) {
+            return '/*/Audio'
+        } else if (ButtonIndex == 1) {
+            return '/*/Monitor'
+        } else if (ButtonIndex == 2) {
+            return '/*/PCComponent'
+        }
+    }
    
     useEffect(() => {
-        Profile(setLoginStat, setDatUser)
+        Profile(setLoginStat, setDatUser, setLoading);
     }, [])
 
     const toggleMenu = () => {
@@ -64,33 +85,31 @@ const Navbar = () => {
 
     return(
         <>
-        <nav className='bg-white border-gray-200 fixed w-full top-0 start-0 z-20 shadow-lg'>
+        <nav className='bg-white border-gray-200 fixed w-full top-0 start-0 z-20 shadow-sm'>
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <Link to={"/"} className='flex items-center space-x-3 rtl:space-x-reverse' style={{ fontFamily: 'Montserrat' }}>
+                <Link to={`${LinkTo()}`} className='flex items-center space-x-3 rtl:space-x-reverse' style={{ fontFamily: 'Montserrat' }} onClick={() => setMenuOpen(false)}>
                     <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-black">Toko</span>
                 </Link>
                 <div className="flex md:order-1">
-                    <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search" aria-expanded="false" className="md:hidden text-gray-500 dark:text-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 me-1">
-                        <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                        </svg>
-                        <span className="sr-only">Search</span>
+                    <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search" aria-expanded="false" className="md:hidden text-gray-500 dark:text-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 me-1"
+                    onClick={() => {navigate('/Cart'); setMenuOpen(false)}}>
+                        <span><IoMdCart size={20}/></span>
                     </button>
                     <div className="relative hidden md:block">
                         <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                            <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                             </svg>
                             <span className="sr-only">Search icon</span>
                         </div>
-                        <input type="text" name="" id="search-navbar" className="block p-2 ps-10 text-sm text-gray-900 rounded-full focus:ring-blue-500 focus:border-blue-500 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" style={{width: '600px', backgroundColor: 'rgba(239, 242, 251, 1)'}} placeholder="Search..." />
+                        <input type="text" name="" className="block p-2 ps-10 text-sm text-gray-900 rounded-full focus:ring-blue-500 focus:border-blue-500 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" style={{width: '600px', backgroundColor: 'rgba(239, 242, 251, 1)'}} placeholder="Search..." />
                     </div>
                     <button data-collapse-toggle="navbar-search" type="button" 
                     className={`inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:focus:ring-gray-600`}
                     aria-controls="navbar-search" aria-expanded="false" onClick={toggleMenu}>
                         <span className="sr-only">Open main menu</span>
                         <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15"/>
                         </svg>
                     </button>
                 </div>
@@ -98,42 +117,59 @@ const Navbar = () => {
                     <div className="relative mt-3 md:hidden">
                         <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                             <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                             </svg>
                         </div>
-                        <input type="text" name="" id="search-navbar" className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..." />
+                        <input type="text" name="" className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..." />
                     </div>
                     <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium first-letter:bg-gray-50 md:space-x-4 rtl:space-x-reverse md:flex-row md:mt-0 m md:bg-white">
-                        {LoginStat ? (
-                        <>
-                        <li>
-                            <span className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-sm ms-2 me-2 cursor-pointer" onClick={() => {navigate('/Cart');setMenuOpen(false)}}>
-                                <IoMdCart className='me-1'/>Cart
-                            </span>
-                        </li>
-                        <li>
-                            <NavLink className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-sm ms-2 me-2 text-black" to="/Profile" onClick={() => setMenuOpen(false)}>{DatUser.namauser}</NavLink>    
-                        </li>
-                        </>
-                        ) : (
-                        <>
+                        {loading ? (
+                            <>
                             <li>
-                                <span className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-md ms-2 me-2 cursor-pointer" onClick={() => {navigate('/Login'); setMenuOpen(false);}}>
-                                    <IoMdCart className='me-1'/> Cart
+                                <span>
+                                    <p className="flex justify-center items-center h-10 px-3 my-2 shadow-sm ms-2 me-2 text-black">
+                                        Memuat...
+                                    </p>
+                                </span>
+                            </li>
+                            </>
+                        ) : (<>
+                            {LoginStat ? (
+                            <>
+                            <li>
+                                <span className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-sm ms-2 me-2 cursor-pointer" onClick={() => {navigate('/Cart');setMenuOpen(false)}}>
+                                    <IoMdCart className='me-1'/>Cart
                                 </span>
                             </li>
                             <li>
-                                <span className="flex justify-center items-center h-10 px-5 my-2 border border-gray-200 rounded-full shadow-md" onClick={() => {setOpenLoginModal(true);setMenuOpen;}}>
-                                    <p>Login</p>
+                                <span>
+                                <NavLink className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-sm ms-2 me-2 text-black" to="/Profile" onClick={() => setMenuOpen(false)}>
+                                    <img src={DatUser.gambar ? DatUser.previewGambar : "Not-image-found.jpg"} className='w-7 rounded-full me-2'/>
+                                    {DatUser.namauser}
+                                </NavLink>    
                                 </span>
                             </li>
-                            <li>
-                                <span className="flex justify-center items-center h-10 px-5 my-2 border border-gray-200 rounded-full shadow-md bg-blue-500 text-white" onClick={() => {navigate('/Register');setMenuOpen;;}}>
-                                    <p>Register</p>
-                                </span>
-                            </li>
-                        </>
-                        )}
+                            </>
+                            ) : (
+                            <>
+                                <li>
+                                    <span className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-md ms-2 me-2 cursor-pointer" onClick={() => {navigate('/Login'); setMenuOpen(false);}}>
+                                        <IoMdCart className='me-1'/> Cart
+                                    </span>
+                                </li>
+                                <li>
+                                    <span className="flex justify-center items-center h-10 px-5 my-2 border border-gray-200 rounded-full shadow-md cursor-pointer" onClick={() => {setOpenLoginModal(true);setMenuOpen;}}>
+                                        <p>Login</p>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span className="flex justify-center items-center h-10 px-5 my-2 border border-gray-200 rounded-full shadow-md bg-blue-500 text-white cursor-pointer" onClick={() => {navigate('/Register');setMenuOpen;;}}>
+                                        <p>Register</p>
+                                    </span>
+                                </li>
+                            </>
+                            )}
+                        </>)}
                     </ul>
                 </div>
             </div>
@@ -153,7 +189,7 @@ const Navbar = () => {
                 </h3>
                 <button type="button" className="end-2.5 text-gray-950 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-200 dark:hover:text-white" data-modal-hide="authentication-modal" onClick={() => setOpenLoginModal(false)}>
                     <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                     </svg>
                     <span className="sr-only">Close modal</span>
                 </button>
@@ -163,11 +199,11 @@ const Navbar = () => {
                 {ErrorLogin && <p className="text-red-500 mb-6">Error Login</p>}
                 <form className="space-y-4" onSubmit={handleLogin}>
                     <div>
-                        <label for="email" className="block mb-2 text-sm text-black font-bold">Alamat Email</label>
+                        <label htmlFor="email" className="block mb-2 text-sm text-black font-bold">Alamat Email</label>
                         <input type="email" name="email" id="email" className="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400" style={{backgroundColor: "rgba(239, 242, 251, 1)"}} placeholder="Email Anda di sini" required/>
                     </div>
                     <div>
-                        <label for="password" className="block mb-2 text-sm text-black font-bold">Kata Sandi</label>
+                        <label htmlFor="password" className="block mb-2 text-sm text-black font-bold">Kata Sandi</label>
                         <input type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400" style={{backgroundColor: "rgba(239, 242, 251, 1)"}} required/>
                     </div>
                     <div className="flex justify-between">
@@ -175,7 +211,7 @@ const Navbar = () => {
                             <div className="flex items-center h-5">
                                 <input id="remember" type="checkbox" value="" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required/>
                             </div>
-                            <label for="remember" className="ms-2 text-sm font-medium text-gray-900">Ingat Saya</label>
+                            <label htmlFor="remember" className="ms-2 text-sm font-medium text-gray-900">Ingat Saya</label>
                         </div>
                         <div className='text-sm font-medium text-gray-900'> Lupa Kata Sandi?{" "}
                         <Link to="/*" className="text-sm text-blue-700 dark:text-blue-500">Pulihkan di sini</Link>
