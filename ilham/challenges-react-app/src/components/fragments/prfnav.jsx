@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faUser, faCalendarDay, faCamera, faCogs } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
-const Navigation = () => {
+const Navigationprf = () => {
     const Menus = [
         { name: "Home", icon: faHome, dis: "translate-x-0", route: "/" },
         { name: "Profile", icon: faUser, dis: "translate-x-16", route: "/profile" },
@@ -12,10 +12,10 @@ const Navigation = () => {
         { name: "Settings", icon: faCogs, dis: "translate-x-64", route: "/settings" },
     ];
 
-    const [active, setActive] = useState(0);
+    const [active, setActive] = useState(1);
 
     return (
-        <div className="bg-white max-h-[5.5rem] px-6 rounded-t-xl">
+        <div className="bg-white max-h-[5.5rem] px-6 rounded-t-xl flex justify-center w-full">
             <ul className="flex relative justify-center">
                 <Link to={Menus[active].route}>
                     <span
@@ -55,5 +55,4 @@ const Navigation = () => {
         </div>
     );
 };
-
-export default Navigation;
+export default Navigationprf;
