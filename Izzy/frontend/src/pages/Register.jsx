@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthLayouts from "../layouts/AuthLayouts"
 import api from "../api";
 import { useEffect, useState } from "react";
-import { IoIosLock } from 'react-icons/io';
+import { PostLoginCheck } from "../services/PostLoginCheck";
 
 
 const Register = () => {
@@ -16,6 +16,7 @@ const Register = () => {
     const [selectedYear, setSelectedYear] = useState("");
     const [selectedMonth, setSelectedMonth] = useState("");
     const [selectedDay, setSelectedDay] = useState("");
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -73,6 +74,8 @@ const Register = () => {
         }
 
     }
+
+    PostLoginCheck(navigate);
 
     return(
         <AuthLayouts type="Register">

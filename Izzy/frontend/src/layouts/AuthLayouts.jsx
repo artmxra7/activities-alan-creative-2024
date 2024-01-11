@@ -10,6 +10,7 @@ const AuthLayouts = ( props ) => {
   }
 
   useEffect(() => {
+      document.title = type;
       window.addEventListener('resize', handleWindowSizeChange);
 
       return () => {

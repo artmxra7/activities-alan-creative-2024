@@ -65,13 +65,27 @@ class UserController extends Controller
             $email = json_decode($freshData)->email;
             $EmployeeDetect = Employee::where('email', $email)->first();
             $UserDetect = User::where('email', $email)->first();
-            if($EmployeeDetect){
-                return response()->json($EmployeeDetect);
-            }else if ($UserDetect){
-                return response()->json($UserDetect);
-            }else{
-                return response()->json(401);
-            }
+            $response = $EmployeeDetect ? $EmployeeDetect : ($UserDetect ? $UserDetect : 401);
+            return response()->json($response);
+        }else{
+            return response()->json(401);
+        }
+    }
+
+    function NavProfile(String $token){
+        if($token){
+            $freshData = base64_decode($token);
+            $email = json_decode($freshData)->email;
+            $EmployeeDetect = Employee::where('email', $email)->first();
+            $UserDetect = User::where('email', $email)->first();
+            $response = $EmployeeDetect ? [
+                'namauser' => $EmployeeDetect->namauser,
+                'gambar' => $EmployeeDetect->gambar
+            ] : ($UserDetect ? [
+                'namauser' => $UserDetect->namauser,
+                'gambar' => $UserDetect->gambar
+            ] : 401);
+            return response()->json($response);
         }else{
             return response()->json(401);
         }
@@ -108,4 +122,35 @@ class UserController extends Controller
         }
 
     }
+
+    function UpdateProfile(Request $request, String $token) {
+        if (!$token) {
+            return;
+        }
+    
+        $freshData = base64_decode($token);
+        $email = json_decode($freshData)->email;
+        $index = $request->ChangedIndex;
+        $find = User::where('email', $email)->first();
+    
+        $updateData = [];
+        switch ($index) {
+            case 0:
+                $updateData['namauser'] = $request->value;
+                break;
+            case 1:
+                $updateData['Jenis_Kelamin'] = $request->value;
+                break;
+            case 2:
+                $updateData[''] = $request->value;
+                break;
+        }
+    
+        try {
+            $find->update($updateData);
+            return response()->json(200);
+        } catch (\Exception $e) {
+            return response()->json(401);
+        }
+    } 
 }

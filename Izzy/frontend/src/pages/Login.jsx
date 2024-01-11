@@ -1,10 +1,29 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import AuthLayouts from "../layouts/AuthLayouts"
 import api from "../api"
+import { PostLoginCheck } from "../services/PostLoginCheck"
 
 const Login = () => {
     const [ErrorLogin, setErrorLogin] = useState(false)
+    const navigate = useNavigate()
+    const [width, setWidth] = useState(window.innerWidth);
+
+    const handleWindowSizeChange = () => {
+      setWidth(window.innerWidth);
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', handleWindowSizeChange);
+
+        return () => {
+            window.removeEventListener('resize', handleWindowSizeChange);
+        }
+    }, []);
+
+  const isMobile = width <= 768;
+
+    PostLoginCheck(navigate);
 
     const handleLogin = async (e) => {
         e.preventDefault()
@@ -23,13 +42,20 @@ const Login = () => {
             // console.log(response)
             setErrorLogin(false)
             window.localStorage.setItem('token', response.data)
-            window.location.href = '/'
+            navigate('/')
         }
     }
-
+    
     return(
         <AuthLayouts type="Login">
             <form onSubmit={handleLogin}>
+                {isMobile ? (
+                <Link to={`${LinkTo()}`} className='flex items-center space-x-3 rtl:space-x-reverse' style={{ fontFamily: 'Montserrat' }} onClick={() => setMenuOpen(false)}>
+                    <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-black">Toko</span>
+                </Link>
+                ) : (
+                <></>
+                )}
                 {ErrorLogin && <p className="text-red-500 mb-6">Error Login</p>}
                 <div className="mb-6">
                     <label htmlFor="" className="block text-slate-700 text-sm font-bold mb-2">Alamat Email</label>

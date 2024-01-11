@@ -47,24 +47,6 @@ const router = createBrowserRouter([
       }
     ]
   },
-  // {
-  //   path: '/Home',
-  //   element: <Home />,
-  //   children: [
-  //     {
-  //       path: '/Home/Audio',
-  //       element: <AudioPages />,
-  //     },
-  //     {
-  //       path: '/Home/Monitor',
-  //       element: <MonitorPages />,
-  //     },
-  //     {
-  //       path: '/Home/PCComponent',
-  //       element: <PCComponentPages />,
-  //     }
-  //   ]
-  // },
   {
     path: '/Login',
     element: <Login />,

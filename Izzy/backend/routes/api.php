@@ -23,3 +23,5 @@ Route::post('/login', [UserController::class, 'login']);
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/UploadImageProfile/{token}', [UserController::class, 'UploadImageProfile']);
 Route::get('/profile/{token}', [UserController::class, 'profile']);
+Route::post('/UpdateProfile/{token}', [UserController::class, 'UpdateProfile']);
+Route::get('/NavProfile/{token}', [UserController::class, 'NavProfile']);
