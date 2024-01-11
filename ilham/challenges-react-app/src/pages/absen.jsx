@@ -4,9 +4,9 @@ import Navigationabs from "../components/fragments/absnav";
 const Table = () => {
   return (
     <div className="flex flex-col h-screen items-center justify-center" style={{backgroundImage: "url('/images/schlcls.png')" }}>
-          <h1 className="text-4xl font-poppins font-bold mb-4 text-white text-center">Absensi</h1>
-      <div className="overflow-x-auto max-w-800 mt-[100px]"> 
-        <table className="min-w-full w-full text-center text-lg font-light">
+      <h1 className="text-4xl font-poppins font-bold mb-4 text-white text-center">Absensi</h1>
+      <div className="flex flex-1 flex-col"> 
+        <table className="flex flex-1 flex-col min-w-full w-full text-center text-lg font-light">
           <thead className="border-b font-medium dark:border-neutral-500 bg-black text-white">
             <tr>
               <th className="px-6 py-4">No</th>
@@ -38,9 +38,7 @@ const Table = () => {
           </tbody>
         </table>
       </div>
-      <div className="flex-1 flex flex-col items-center justify-end">
-        <Navigationabs />
-      </div>
+      <Navigationabs />
     </div>
   );
 };
