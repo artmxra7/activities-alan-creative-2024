@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { IoMdCart } from "react-icons/io";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { FaProductHunt } from "react-icons/fa6";
+import { RiBillFill } from "react-icons/ri";
 import api from '../api';
 import { debounce } from 'lodash';
 
@@ -17,7 +19,8 @@ const Profile = debounce(async (setLoginStat, setDatUser, setLoading) => {
                 namauser: response.data.namauser,
                 gambar: response.data.gambar,
                 previewGambar: `http://localhost:8000/images/${response.data.gambar}`
-            })
+            });
+            sessionStorage.setItem('role', response.data.role)
         }else{
             setLoginStat(false)
             setLoading(false)
@@ -41,28 +44,31 @@ const Navbar = () => {
     const [DatUser, setDatUser] = useState({namauser: '', gambar: '', previewGambar: ''}); 
     const [isMenuOpen, setMenuOpen] = useState(false);
     const [loading, setLoading] = useState(true);
+    const role = sessionStorage.getItem('role');
+
     const navigate = useNavigate();
 
-    const LinkTo = () => {
-        const ButtonIndex = sessionStorage.getItem('buttonIndex')
-        const role = sessionStorage.getItem('role')
-        if(role === 'User' || role === null || role === undefined){
-            if (ButtonIndex == 0) {
-                return '/*/Audio'
-            } else if (ButtonIndex == 1) {
-                return '/*/Monitor'
-            } else if (ButtonIndex == 2) {
-                return '/*/PCComponent'
-            }
-        }else if(role === 'admin'){
-            return '/Admin'
-        }else if(role === 'staff'){
-            return '/Staff'
+    const LinkTo = (role) => {
+        const ButtonIndex = sessionStorage.getItem('buttonIndex');
+        if (role === 'User' || role === null || role === undefined) {
+          switch (ButtonIndex) {
+            case 0:
+              return '/*/Audio';
+            case 1:
+              return '/*/Monitor';
+            case 2:
+              return '/*/PCComponent';
+          }
+        } else if (role === 'admin') {
+          return '/Admin';
+        } else if (role === 'staff') {
+          return '/Staff';
         }
-    }
-   
+      };
+
     useEffect(() => {
         Profile(setLoginStat, setDatUser, setLoading);
+        navigate(LinkTo(role))
     }, [])
 
     const toggleMenu = () => {
@@ -94,14 +100,22 @@ const Navbar = () => {
         <>
         <nav className='bg-white border-gray-200 fixed w-full top-0 start-0 z-20 shadow-sm'>
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <Link to={`${LinkTo()}`} className='flex items-center space-x-3 rtl:space-x-reverse' style={{ fontFamily: 'Montserrat' }} onClick={() => setMenuOpen(false)}>
+                <Link to={`${LinkTo(role)}`} className='flex items-center space-x-3 rtl:space-x-reverse' style={{ fontFamily: 'Montserrat' }} onClick={() => setMenuOpen(false)}>
                     <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-black">Toko</span>
                 </Link>
                 <div className="flex md:order-1">
-                    <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search" aria-expanded="false" className="md:hidden text-gray-500 dark:text-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 me-1"
+                    {role === 'User' || role === null || role === undefined ? (
+                    <button type="button" aria-expanded="false" className="md:hidden text-gray-500 dark:text-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 me-1"
                     onClick={() => {navigate('/Cart'); setMenuOpen(false)}}>
                         <span><IoMdCart size={20}/></span>
                     </button>
+                    )
+                    : (
+                    <button type="button" aria-expanded="false" className="md:hidden text-gray-500 dark:text-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 me-1"
+                        onClick={() => {navigate('/Admin/*/Produk'); setMenuOpen(false)}}>
+                            <span><FaProductHunt size={20}/></span>
+                    </button>
+                    )}
                     <div className="relative hidden md:block">
                         <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                             <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -143,11 +157,31 @@ const Navbar = () => {
                         ) : (<>
                             {LoginStat ? (
                             <>
-                            <li>
+                            <li>{role === 'User' ? (
                                 <span className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-sm ms-2 me-2 cursor-pointer" onClick={() => {navigate('/Cart');setMenuOpen(false)}}>
                                     <IoMdCart className='me-1'/>Cart
                                 </span>
+                                ) : role === 'admin' ? (
+                                <span className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-sm ms-2 me-2 cursor-pointer" onClick={() => {navigate('/Admin/*/Produk');setMenuOpen(false)}}>
+                                    <FaProductHunt className='me-1'/>Product
+                                </span>
+                                ) : (
+                                <span className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-sm ms-2 me-2 cursor-pointer" onClick={() => {navigate('');setMenuOpen(false)}}>
+                                    <FaProductHunt className='me-1'/>Product
+                                </span>
+                                )}
                             </li>
+                            {role === 'admin' ? (
+                            <span className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-sm ms-2 me-2 cursor-pointer" onClick={() => {navigate('/Admin/*/Transaksi');setMenuOpen(false)}}>
+                                <RiBillFill className='me-1'/> Transaction
+                            </span>
+                            ) : role === 'staff' ? (
+                            <span className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-sm ms-2 me-2 cursor-pointer" onClick={() => {navigate('');setMenuOpen(false)}}>
+                                <RiBillFill className='me-1'/> Transaction
+                            </span>   
+                            ) : (
+                                <></>
+                            )}
                             <li>
                                 <span>
                                 <NavLink className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-sm ms-2 me-2 text-black" to="/Profile" onClick={() => setMenuOpen(false)}>

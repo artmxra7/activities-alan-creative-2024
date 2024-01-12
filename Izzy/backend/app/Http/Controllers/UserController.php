@@ -68,11 +68,7 @@ class UserController extends Controller
             $email = json_decode($freshData)->email;
             $EmployeeDetect = Employee::where('email', $email)->first();
             $UserDetect = User::where('email', $email)->first();
-            $response = $EmployeeDetect ? [
-                'role' => $EmployeeDetect->role
-            ] : ($UserDetect ? [
-                'role' => 'User'
-            ] : 401);
+            $response = $EmployeeDetect ? $EmployeeDetect : ($UserDetect ? : 401);
             return response()->json($response);
         }else{
             return response()->json(401);
@@ -87,10 +83,12 @@ class UserController extends Controller
             $UserDetect = User::where('email', $email)->first();
             $response = $EmployeeDetect ? [
                 'namauser' => $EmployeeDetect->namauser,
-                'gambar' => $EmployeeDetect->gambar
+                'gambar' => $EmployeeDetect->gambar,
+                'role' => $EmployeeDetect->role
             ] : ($UserDetect ? [
                 'namauser' => $UserDetect->namauser,
-                'gambar' => $UserDetect->gambar
+                'gambar' => $UserDetect->gambar,
+                'role' => 'User'
             ] : 401);
             return response()->json($response);
         }else{
@@ -159,7 +157,7 @@ class UserController extends Controller
                 $updateData['Jenis_Kelamin'] = $request->value;
                 break;
             case 2:
-                $updateData[''] = $request->value;
+                $updateData['tgllahir'] = $request->value;
                 break;
         }
     

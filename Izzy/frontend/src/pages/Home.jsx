@@ -14,13 +14,14 @@ import HeaderMobile from '../elements/HeaderMobile';
 const Home = () => {
     const [ButtonIndex, setButtonIndex] = useState(() => {
         const savedIndex = sessionStorage.getItem('buttonIndex');
-        return savedIndex !== null ? JSON.parse(savedIndex) : 0;
+        return savedIndex !== null ? JSON.parse(savedIndex) : null;
     });  
     const [width, setWidth] = useState(window.innerWidth);
     const navigate = useNavigate();
 
     const handleClick = (index) => {
         const paths = ['/*/Audio', '/*/Monitor', '/*/PCComponent'];
+        sessionStorage.setItem('buttonIndex', JSON.stringify(index));
         navigate(paths[index]); 
     }
 
@@ -28,11 +29,32 @@ const Home = () => {
         setWidth(window.innerWidth);
     }
 
+    const PageCheck = (role, ButtonIndex) => {
+        if (role === 'User' || role === null || role === undefined) {
+            switch (ButtonIndex) {
+                case 0:
+                  return '/*/Audio';
+                case 1:
+                  return '/*/Monitor';
+                case 2:
+                  return '/*/PCComponent';
+              }
+              console.log('kacau');
+        }
+        if (role === 'admin') {
+          return '/Admin';
+        } else if (role === 'staff') {
+          return '/Staff';
+        }
+    }
+
     useEffect(() => {
         document.title = 'Beranda';
         window.addEventListener('resize', handleWindowSizeChange);
         sessionStorage.setItem('buttonIndex', JSON.stringify(ButtonIndex));
-        handleClick(ButtonIndex);
+        const role = sessionStorage.getItem('role');
+        ButtonIndex === null ? setButtonIndex(0) : setButtonIndex(ButtonIndex);
+        navigate(PageCheck(role, ButtonIndex));
 
         return () => {
             window.removeEventListener('resize', handleWindowSizeChange);

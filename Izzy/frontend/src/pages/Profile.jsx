@@ -175,7 +175,9 @@ const Profile = () => {
     // Logout
     const logout = () => {
         localStorage.removeItem('token')
-        window.location.href = '/'
+        sessionStorage.removeItem('buttonIndex')
+        sessionStorage.removeItem('role')
+        window.location.href = '/';
     }
 
     return(
