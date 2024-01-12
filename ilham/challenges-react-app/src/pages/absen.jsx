@@ -9,9 +9,9 @@ const Table = () => {
         <table className="flex flex-1 flex-col min-w-full w-full text-center text-lg font-light">
           <thead className="border-b font-medium dark:border-neutral-500 bg-black text-white">
             <tr>
-              <th className="px-6 py-4">No</th>
-              <th className="px-6 py-4">Nama</th>
-              <th className="px-6 py-4">Keterangan</th>
+              <th className="px-12 py-4">No</th>
+              <th className="px-12 py-4">Nama</th>
+              <th className="px-5  py-4">Keterangan</th>
             </tr>
           </thead>
           <tbody>
