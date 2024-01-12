@@ -44,9 +44,14 @@ const Navbar = () => {
     const [DatUser, setDatUser] = useState({namauser: '', gambar: '', previewGambar: ''}); 
     const [isMenuOpen, setMenuOpen] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [width, setWidth] = useState(window.innerWidth);
     const role = sessionStorage.getItem('role');
 
     const navigate = useNavigate();
+
+    const handleWindowSizeChange = () => {
+        setWidth(window.innerWidth);
+    }
 
     const LinkTo = (role) => {
         const ButtonIndex = sessionStorage.getItem('buttonIndex');
@@ -69,6 +74,11 @@ const Navbar = () => {
     useEffect(() => {
         Profile(setLoginStat, setDatUser, setLoading);
         navigate(LinkTo(role))
+
+        window.addEventListener('resize', handleWindowSizeChange);
+        return () => {
+            window.removeEventListener('resize', handleWindowSizeChange);
+        }
     }, [])
 
     const toggleMenu = () => {
@@ -95,6 +105,8 @@ const Navbar = () => {
             response.data.role === 'User' ? [navigate('/'), Profile(setLoginStat, setDatUser, setLoading), setOpenLoginModal(false)] : response.data.role === 'admin' ? [navigate('/Admin'), Profile(setLoginStat, setDatUser, setLoading), setOpenLoginModal(false)] : [navigate('/Staff'), Profile(setLoginStat, setDatUser, setLoading), setOpenLoginModal(false)]
         }
     }
+
+    const isMobile = width <= 768;
 
     return(
         <>
@@ -143,7 +155,7 @@ const Navbar = () => {
                         </div>
                         <input type="text" name="" className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..." />
                     </div>
-                    <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium first-letter:bg-gray-50 md:space-x-4 rtl:space-x-reverse md:flex-row md:mt-0 m md:bg-white">
+                    <ul className="flex flex-wrap justify-center p-4 md:p-0 mt-4 font-medium first-letter:bg-gray-50 md:space-x-4 rtl:space-x-reverse md:flex-row md:mt-0 m md:bg-white">
                         {loading ? (
                             <>
                             <li>
@@ -155,62 +167,112 @@ const Navbar = () => {
                             </li>
                             </>
                         ) : (<>
-                            {LoginStat ? (
-                            <>
-                            <li>{role === 'User' ? (
-                                <span className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-sm ms-2 me-2 cursor-pointer" onClick={() => {navigate('/Cart');setMenuOpen(false)}}>
-                                    <IoMdCart className='me-1'/>Cart
-                                </span>
-                                ) : role === 'admin' ? (
-                                <span className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-sm ms-2 me-2 cursor-pointer" onClick={() => {navigate('/Admin/*/Produk');setMenuOpen(false)}}>
-                                    <FaProductHunt className='me-1'/>Product
-                                </span>
+                                {isMobile ? (
+                                    <>
+                                    {LoginStat ? (
+                                    <>
+                                        <li style={{width: '50%'}}>
+                                            {role === 'User' ? (
+                                            <span className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-sm ms-2 me-2 cursor-pointer" onClick={() => {navigate('/Cart');setMenuOpen(false)}}>
+                                                <IoMdCart className='me-1'/>Cart
+                                            </span>
+                                            ) : role === 'admin' ? (
+                                            <span className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-sm ms-2 me-2 cursor-pointer" onClick={() => {navigate('/Admin/*/Produk');setMenuOpen(false)}}>
+                                                <FaProductHunt className='me-1'/>Product
+                                            </span>
+                                            ) : (
+                                            <span className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-sm ms-2 me-2 cursor-pointer" onClick={() => {navigate('');setMenuOpen(false)}}>
+                                                <FaProductHunt className='me-1'/>Product
+                                            </span>
+                                            )}
+                                        </li>
+                                        <li style={{width: '50%'}}>
+                                            {role === 'admin' ? (
+                                            <span className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-sm ms-2 me-2 cursor-pointer" onClick={() => {navigate('/Admin/*/Transaksi');setMenuOpen(false)}}>
+                                                <RiBillFill className='me-1'/> Transaction
+                                            </span>
+                                            ) : role === 'staff' ? (
+                                            <span className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-sm ms-2 me-2 cursor-pointer" onClick={() => {navigate('');setMenuOpen(false)}}>
+                                                <RiBillFill className='me-1'/> Transaction
+                                            </span>   
+                                            ) : (
+                                                <></>
+                                            )}
+                                        </li>
+                                        <li style={{width: isMobile ? '100%' : ''}}>
+                                            <span>
+                                            <NavLink className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-sm ms-2 me-2 text-black" to="/Profile" onClick={() => setMenuOpen(false)}>
+                                                <img src={DatUser.gambar ? DatUser.previewGambar : "No-image-found.jpg"} className='w-7 rounded-full me-2'/>
+                                                {DatUser.namauser}
+                                            </NavLink>    
+                                            </span>
+                                        </li>
+                                    </>
+                                    ) : (
+                                    <>
+                                        <li>
+                                            <span className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-md ms-2 me-2 cursor-pointer" onClick={() => {navigate('/Login'); setMenuOpen(false);}}>
+                                                <IoMdCart className='me-1'/> Cart
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span className="flex justify-center items-center h-10 px-5 my-2 border border-gray-200 rounded-full shadow-md cursor-pointer" onClick={() => {setOpenLoginModal(true);setMenuOpen;}}>
+                                                <p>Login</p>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span className="flex justify-center items-center h-10 px-5 my-2 border border-gray-200 rounded-full shadow-md bg-blue-500 text-white cursor-pointer" onClick={() => {navigate('/Register');setMenuOpen;;}}>
+                                                <p>Register</p>
+                                            </span>
+                                        </li>
+                                    </>
+                                    )}
+                                    </>
                                 ) : (
-                                <span className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-sm ms-2 me-2 cursor-pointer" onClick={() => {navigate('');setMenuOpen(false)}}>
-                                    <FaProductHunt className='me-1'/>Product
-                                </span>
+                                    <>
+                                    {LoginStat ? (
+                                    <>
+                                        <li>
+                                            {role === 'User' ? (
+                                            <span className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-sm ms-2 me-2 cursor-pointer" onClick={() => {navigate('/Cart');setMenuOpen(false)}}>
+                                                <IoMdCart className='me-1'/>Cart
+                                            </span>
+                                            ) : (
+                                            <></>
+                                            )}
+                                        </li>
+                                        <li>
+                                            <span>
+                                            <NavLink className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-sm ms-2 me-2 text-black" to="/Profile" onClick={() => setMenuOpen(false)}>
+                                                <img src={DatUser.gambar ? DatUser.previewGambar : "No-image-found.jpg"} className='w-7 rounded-full me-2'/>
+                                                {DatUser.namauser}
+                                            </NavLink>    
+                                            </span>
+                                        </li>
+                                    </>
+                                    ) : (
+                                    <>
+                                        <li style={{width: isMobile ? '100%' : ''}}>
+                                            <span className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-md ms-2 me-2 cursor-pointer" onClick={() => {navigate('/Login'); setMenuOpen(false);}}>
+                                                <IoMdCart className='me-1'/> Cart
+                                            </span>
+                                        </li>
+                                        <li style={{width: isMobile ? '50%' : ''}}>
+                                            <span className="flex justify-center items-center h-10 px-5 my-2 border border-gray-200 rounded-full shadow-md cursor-pointer" onClick={() => {setOpenLoginModal(true);setMenuOpen;}}>
+                                                <p>Login</p>
+                                            </span>
+                                        </li>
+                                        <li style={{width: isMobile ? '50%' : ''}}>
+                                            <span className="flex justify-center items-center h-10 px-5 my-2 border border-gray-200 rounded-full shadow-md bg-blue-500 text-white cursor-pointer" onClick={() => {navigate('/Register');setMenuOpen;;}}>
+                                                <p>Register</p>
+                                            </span>
+                                        </li>
+                                    </>
+                                    )}
+                                    </>
                                 )}
-                            </li>
-                            {role === 'admin' ? (
-                            <span className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-sm ms-2 me-2 cursor-pointer" onClick={() => {navigate('/Admin/*/Transaksi');setMenuOpen(false)}}>
-                                <RiBillFill className='me-1'/> Transaction
-                            </span>
-                            ) : role === 'staff' ? (
-                            <span className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-sm ms-2 me-2 cursor-pointer" onClick={() => {navigate('');setMenuOpen(false)}}>
-                                <RiBillFill className='me-1'/> Transaction
-                            </span>   
-                            ) : (
-                                <></>
+                            </> 
                             )}
-                            <li>
-                                <span>
-                                <NavLink className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-sm ms-2 me-2 text-black" to="/Profile" onClick={() => setMenuOpen(false)}>
-                                    <img src={DatUser.gambar ? DatUser.previewGambar : "No-image-found.jpg"} className='w-7 rounded-full me-2'/>
-                                    {DatUser.namauser}
-                                </NavLink>    
-                                </span>
-                            </li>
-                            </>
-                            ) : (
-                            <>
-                                <li>
-                                    <span className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-md ms-2 me-2 cursor-pointer" onClick={() => {navigate('/Login'); setMenuOpen(false);}}>
-                                        <IoMdCart className='me-1'/> Cart
-                                    </span>
-                                </li>
-                                <li>
-                                    <span className="flex justify-center items-center h-10 px-5 my-2 border border-gray-200 rounded-full shadow-md cursor-pointer" onClick={() => {setOpenLoginModal(true);setMenuOpen;}}>
-                                        <p>Login</p>
-                                    </span>
-                                </li>
-                                <li>
-                                    <span className="flex justify-center items-center h-10 px-5 my-2 border border-gray-200 rounded-full shadow-md bg-blue-500 text-white cursor-pointer" onClick={() => {navigate('/Register');setMenuOpen;;}}>
-                                        <p>Register</p>
-                                    </span>
-                                </li>
-                            </>
-                            )}
-                        </>)}
                     </ul>
                 </div>
             </div>
