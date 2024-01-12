@@ -19,9 +19,10 @@ const Footer = () => {
 
     const isMobile = width <= 768;
     const isMobilev2 = width <= 1080;
+    const isMobilev3 = width <= 900;
 
     return(
-        <footer className={`bg-gray-800 text-white ${isMobile ? 'p-6' : 'p-6'} w-full`} style={{marginBottom: isMobile ? "75px" : isMobilev2 ? "0px" : "" }}>
+        <footer className={`bg-gray-800 text-white ${isMobile ? 'p-6' : 'p-6'} w-full`} style={{marginBottom: isMobile ? "75px" : "0"}}>
             <div className={`${isMobile ? 'w-full' : 'w-3/4'} container mx-auto flex justify-between items-center`}>
                 <Link to="/" className='text-3xl font-bold' style={{ fontFamily: 'Montserrat' }}>Toko</Link>
             </div>

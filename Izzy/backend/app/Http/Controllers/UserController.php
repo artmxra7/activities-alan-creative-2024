@@ -25,10 +25,13 @@ class UserController extends Controller
 
         if($EmployeeDetect){
             $token = base64_encode(json_encode($data));
-            return response()->json($token);
+            return response()->json(['token' => $token,
+            'role' => $EmployeeDetect->role]);
         }else if ($UserDetect){
             $token = base64_encode(json_encode($data));
-            return response()->json($token);
+            return response()->json([
+                'token' => $token, 
+                'role' => 'User']);
         }else{
             return response()->json(401);
         }
@@ -65,7 +68,11 @@ class UserController extends Controller
             $email = json_decode($freshData)->email;
             $EmployeeDetect = Employee::where('email', $email)->first();
             $UserDetect = User::where('email', $email)->first();
-            $response = $EmployeeDetect ? $EmployeeDetect : ($UserDetect ? $UserDetect : 401);
+            $response = $EmployeeDetect ? [
+                'role' => $EmployeeDetect->role
+            ] : ($UserDetect ? [
+                'role' => 'User'
+            ] : 401);
             return response()->json($response);
         }else{
             return response()->json(401);
@@ -100,21 +107,30 @@ class UserController extends Controller
         $email = json_decode($freshData)->email;
 
         $find = User::where('email', $email)->first();
-
+        $find2 = Employee::where('email', $email)->first();
+        
         try{
             if($request->hasFile('image')){
                 $image = $request->file('image');
-                $filename = time() . '.' . $image->getClientOriginalExtension();
-                $image->move(public_path('images'), $filename);
-
-                $tryUpdate = $find->update([
-                    'gambar' => $filename
-                ]);
+                $filename = time() . '.' . $image->getClientOriginalExtension();     
                 
-                if($tryUpdate){
+                if($find){
+                    $find->update([
+                        'gambar' => $filename
+                    ]);
+                    $image->move(public_path('images'), $filename);
                     return response()->json(200);
-                }else{
-                    return response()->json(401);
+                }
+                else{
+                    if($find2){
+                        $find2->update([
+                            'gambar' => $filename
+                        ]);
+                        $image->move(public_path('images'), $filename);
+                        return response()->json(200);
+                    }else{
+                        return response()->json(401);
+                    }
                 }
             }
         }catch(\Exception $e){
@@ -132,6 +148,7 @@ class UserController extends Controller
         $email = json_decode($freshData)->email;
         $index = $request->ChangedIndex;
         $find = User::where('email', $email)->first();
+        $find2 = Employee::where('email', $email)->first();
     
         $updateData = [];
         switch ($index) {
@@ -147,7 +164,7 @@ class UserController extends Controller
         }
     
         try {
-            $find->update($updateData);
+            $find ? $find->update($updateData) : ($find2 ? $find2->update($updateData) : 401);
             return response()->json(200);
         } catch (\Exception $e) {
             return response()->json(401);

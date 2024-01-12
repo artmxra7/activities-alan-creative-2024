@@ -45,12 +45,19 @@ const Navbar = () => {
 
     const LinkTo = () => {
         const ButtonIndex = sessionStorage.getItem('buttonIndex')
-        if (ButtonIndex == 0) {
-            return '/*/Audio'
-        } else if (ButtonIndex == 1) {
-            return '/*/Monitor'
-        } else if (ButtonIndex == 2) {
-            return '/*/PCComponent'
+        const role = sessionStorage.getItem('role')
+        if(role === 'User' || role === null || role === undefined){
+            if (ButtonIndex == 0) {
+                return '/*/Audio'
+            } else if (ButtonIndex == 1) {
+                return '/*/Monitor'
+            } else if (ButtonIndex == 2) {
+                return '/*/PCComponent'
+            }
+        }else if(role === 'admin'){
+            return '/Admin'
+        }else if(role === 'staff'){
+            return '/Staff'
         }
     }
    
@@ -76,10 +83,10 @@ const Navbar = () => {
         if(response.data == 401) {
             setErrorLogin(true)
         }else{
-            // console.log(response)
             setErrorLogin(false)
-            window.localStorage.setItem('token', response.data)
-            window.location.href = '/'
+            window.localStorage.setItem('token', response.data.token)
+            sessionStorage.setItem('role', response.data.role)
+            response.data.role === 'User' ? [navigate('/'), Profile(setLoginStat, setDatUser, setLoading), setOpenLoginModal(false)] : response.data.role === 'admin' ? [navigate('/Admin'), Profile(setLoginStat, setDatUser, setLoading), setOpenLoginModal(false)] : [navigate('/Staff'), Profile(setLoginStat, setDatUser, setLoading), setOpenLoginModal(false)]
         }
     }
 
@@ -144,7 +151,7 @@ const Navbar = () => {
                             <li>
                                 <span>
                                 <NavLink className="flex justify-center items-center h-10 px-3 my-2 border border-gray-200 rounded-full shadow-sm ms-2 me-2 text-black" to="/Profile" onClick={() => setMenuOpen(false)}>
-                                    <img src={DatUser.gambar ? DatUser.previewGambar : "Not-image-found.jpg"} className='w-7 rounded-full me-2'/>
+                                    <img src={DatUser.gambar ? DatUser.previewGambar : "No-image-found.jpg"} className='w-7 rounded-full me-2'/>
                                     {DatUser.namauser}
                                 </NavLink>    
                                 </span>

@@ -115,7 +115,6 @@ const Profile = () => {
             }catch(err){
                 console.log(err)
             }
-
         }else{
             setDataProfile((prevItems) => ({
                 ...prevItems,
@@ -307,7 +306,7 @@ const Profile = () => {
                                     )}
                                 </div>
                             </div>
-                        <h1 className="text-xl mb-2 mt-8 font-bold text-center mb-2">Kontak Diri</h1>
+                        <h1 className="text-xl mb-2 mt-8 font-bold text-center">Kontak Diri</h1>
                             <div className="flex justify-center">
                                 <div style={{width: '130px'}}>
                                     <p className='text-md mb-2'>Email</p>

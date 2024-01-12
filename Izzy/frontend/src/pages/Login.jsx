@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import AuthLayouts from "../layouts/AuthLayouts"
 import api from "../api"
@@ -41,8 +41,20 @@ const Login = () => {
         }else{
             // console.log(response)
             setErrorLogin(false)
-            window.localStorage.setItem('token', response.data)
-            navigate('/')
+            window.localStorage.setItem('token', response.data.token)
+            sessionStorage.setItem('role', response.data.role)
+            response.data.role === 'User' ? navigate('/') : response.data.role === 'admin' ? navigate('/Admin') : navigate('/Staff')
+        }
+    }
+
+    const LinkTo = () => {
+        const ButtonIndex = sessionStorage.getItem('buttonIndex')
+        if (ButtonIndex == 0) {
+            return '/*/Audio'
+        } else if (ButtonIndex == 1) {
+            return '/*/Monitor'
+        } else if (ButtonIndex == 2) {
+            return '/*/PCComponent'
         }
     }
     

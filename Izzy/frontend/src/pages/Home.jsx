@@ -44,7 +44,7 @@ const Home = () => {
         return(
             <div>
                 {!isMobile ? (<Header/>) : (<HeaderMobile/>)}
-                <div className='container-full p-5 mx-auto' style={{backgroundColor: 'rgba(239, 242, 251, 1)'}}>
+                <div className={`container-full p-5 mx-auto ${isMobile ? 'min-h-screen' : ''}`} style={{backgroundColor: 'rgba(239, 242, 251, 1)'}}>
                     
                 {!isMobile && (
                         <div className='flex container mx-auto flex-wrap'>
