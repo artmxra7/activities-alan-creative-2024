@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media (min-width: 768px) {
+
+    /* Menyembunyikan Navigation pada laptop dan PC */
+    .bg-white {
+        display: none;
+    }
+}
+
+;
