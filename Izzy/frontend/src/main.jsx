@@ -16,7 +16,7 @@ import ProdukPages from './pages/AdminHomeChildrenPages/ProdukPages.jsx'
 import TransaksiPages from './pages/AdminHomeChildrenPages/TransaksiPages.jsx'
 
 const router = createBrowserRouter([{
-    path: '/activities-alan-creative-2024//*',
+    path: '/activities-alan-creative-2024/',
     element: <App />,
     errorElement: <ErrorPages />,
     children: [
