@@ -17,9 +17,9 @@ const AdminHome = () => {
 
     const PageCheck = (role) => {
         if (role === 'User' || role === null || role === undefined) {
-          return '/';
+          return '/activities-alan-creative-2024/';
         } else if (role === 'staff') {
-          return '/Staff';
+          return '/activities-alan-creative-2024/*/Staff';
         }
     }
 
