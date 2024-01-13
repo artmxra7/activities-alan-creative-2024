@@ -24,7 +24,7 @@ const AdminHome = () => {
     }
 
     const handleClick = (index) => {
-        const paths = ['/Admin', '/Admin/*/Produk', '/Admin/*/Transaksi'];
+        const paths = ['/activities-alan-creative-2024/*/Admin', '/activities-alan-creative-2024/*/Admin/Produk', '/activities-alan-creative-2024/*/Admin/Transaksi'];
         navigate(paths[index]); 
     }
 
@@ -62,8 +62,8 @@ const AdminHome = () => {
             )}
             <div>
                 <Routes>
-                    <Route path='/Admin/*/Produk' element={<ProdukPages/>}></Route>
-                    <Route path='/Admin/*/Transaksi' element={<TransaksiPages/>}></Route>
+                    <Route path='*/Admin/Produk' element={<ProdukPages/>}></Route>
+                    <Route path='*/Admin/Transaksi' element={<TransaksiPages/>}></Route>
                 </Routes>
             </div>
         </div>

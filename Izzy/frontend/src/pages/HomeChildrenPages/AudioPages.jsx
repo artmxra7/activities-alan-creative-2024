@@ -82,7 +82,7 @@ const AudioPages = () => {
                 ) : (
                     data.map((item, index) => (
                         <div className="bg-gray-400 p-4 rounded-xl flex flex-col items-center h-full" key={index}>
-                            <img src="../../No-image-found.jpg" className="my-auto border border-gray-500 rounded-lg m-2 shadow-md mb-2" style={{width: '200px', height: '200px'}}/>
+                            <img src="No-image-found.jpg" className="my-auto border border-gray-500 rounded-lg m-2 shadow-md mb-2" style={{width: '200px', height: '200px'}}/>
                             <p className="m-2 text-white font-semibold">{item.name}</p>
                             <p className="m-2 text-white text-end">{formattedNumber(item.price)}</p>
                         </div>

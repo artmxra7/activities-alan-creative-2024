@@ -66,7 +66,7 @@ const Register = () => {
 
         if(response.data == 200) {
             setErrorRegister(false)
-            window.location.href = '/Login'
+            navigate('/activities-alan-creative-2024/Login')
         } else if(response.status == 500) {
             setErrorRegister(true)
         } else if(response.status == 400) {

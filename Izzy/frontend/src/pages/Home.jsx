@@ -20,7 +20,7 @@ const Home = () => {
     const navigate = useNavigate();
 
     const handleClick = (index) => {
-        const paths = ['/*/Audio', '/*/Monitor', '/*/PCComponent'];
+        const paths = ['/activities-alan-creative-2024/*/Home/Audio', '/activities-alan-creative-2024/*/Home/Monitor', 'activities-alan-creative-2024/*/Home/PCComponent'];
         sessionStorage.setItem('buttonIndex', JSON.stringify(index));
         navigate(paths[index]); 
     }
@@ -33,18 +33,17 @@ const Home = () => {
         if (role === 'User' || role === null || role === undefined) {
             switch (ButtonIndex) {
                 case 0:
-                  return '/*/Audio';
+                  return '/activities-alan-creative-2024/*/Home/Audio';
                 case 1:
-                  return '/*/Monitor';
+                  return '/activities-alan-creative-2024/*/Home/Monitor';
                 case 2:
-                  return '/*/PCComponent';
+                  return '/activities-alan-creative-2024/*/Home/PCComponent';
               }
-              console.log('kacau');
         }
         if (role === 'admin') {
-          return '/Admin';
+          return '/activities-alan-creative-2024/*/Admin';
         } else if (role === 'staff') {
-          return '/Staff';
+          return '/activities-alan-creative-2024/*/Staff';
         }
     }
 
@@ -70,7 +69,7 @@ const Home = () => {
                     
                 {!isMobile && (
                         <div className='flex container mx-auto flex-wrap'>
-                            <button className={`flex items-center h-10 px-6 font-semibold rounded-md bg-transparent text-black border-b-2 shadow-md me-8`} style={{borderRadius: "45px"}} onClick={() => window.location.href = "/Kategori"}>
+                            <button className={`flex items-center h-10 px-6 font-semibold rounded-md bg-transparent text-black border-b-2 shadow-md me-8`} style={{borderRadius: "45px"}} onClick={() => window.location.href = "/activities-alan-creative-2024/Kategori"}>
                             <span className='mr-2'><CgMenuRight className='transform -scale-x-100' size={20}/></span>Semua Kategori</button>            
                             <button className={`h-10 px-6 font-semibold rounded-md text-black border-b-2 ${ButtonIndex === 0 ? 'border-b-2 bg-blue-700  text-white shadow-md' : 'bg-transparent'} shadow-sm me-2`} style={{borderRadius: "45px"}}
                             onClick={() => {setButtonIndex(0); handleClick(0);}}>Audio</button>            
@@ -82,9 +81,9 @@ const Home = () => {
                     )}
                     <div>
                         <Routes>
-                            <Route path='/*/Audio' element={<AudioPages/>}/>
-                            <Route path='/*/Monitor' element={<MonitorPages/>}/>
-                            <Route path='/*/PcComponent' element={<PCComponentPages/>}/>
+                            <Route path='*/Home/Audio' element={<AudioPages/>}/>
+                            <Route path='*/Home/Monitor' element={<MonitorPages/>}/>
+                            <Route path='*/Home/PcComponent' element={<PCComponentPages/>}/>
                         </Routes>
                     </div>
                 </div>

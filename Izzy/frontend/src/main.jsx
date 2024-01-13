@@ -2,8 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import { BrowserRouter, RouterProvider, createBrowserRouter } from 'react-router-dom'
-import Home from './pages/Home.jsx'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Register from './pages/Register.jsx'
 import Login from './pages/Login.jsx'
 import Cart from './pages/Cart.jsx'
@@ -17,68 +16,63 @@ import StaffHome from './pages/StaffHome.jsx'
 import ProdukPages from './pages/AdminHomeChildrenPages/ProdukPages.jsx'
 import TransaksiPages from './pages/AdminHomeChildrenPages/TransaksiPages.jsx'
 
-const router = createBrowserRouter([
-  {
-    path: '/',
+const router = createBrowserRouter([{
+    path: '/activities-alan-creative-2024//*',
     element: <App />,
     // errorElement: <ErrorPages />,
     children: [
       {
-        path: '/Cart',
+        path: '/activities-alan-creative-2024/*/Cart',
         element: <Cart />,
       },
       {
-        path: '/Profile',
+        path: '/activities-alan-creative-2024/*/Profile',
         element: <Profile />,
-      },
+      }, 
       {
-        path: '/*',
+        path: '/activities-alan-creative-2024/*/Home',
         element: <App />,
-        children: [
+        children: [  
           {
-            path: '/*/Audio',
+            path: '/activities-alan-creative-2024/*/Home/Audio',
             element: <AudioPages />,
           },
           {
-            path: '/*/Monitor',
+            path: '/activities-alan-creative-2024/*/Home/Monitor',
             element: <MonitorPages />,
           },
           {
-            path: '/*/PCComponent',
+            path: '/activities-alan-creative-2024/*/Home/PCComponent',
             element: <PCComponentPages />,
-          },      
-          {
-            path: '/*/Produk',
-            element: <ErrorPages />,
-          }
+          },     
         ]
       },
       {
-        path: '/Admin',
+        path: '/activities-alan-creative-2024/*/Admin',
         element: <App />,
         children: [
           {
-            path: '/Admin/*/Produk',
+            path: '/activities-alan-creative-2024/*/Admin/Produk',
             element: <ProdukPages />,
           },
           {
-            path: '/Admin/*/Transaksi',
+            path: '/activities-alan-creative-2024/*/Admin/Transaksi',
             element: <TransaksiPages   />,
           }
         ]
       },
       {
-        path: '/Staff',
+        path: '/activities-alan-creative-2024/*/Staff',
         element: <StaffHome />,
       }
     ]
   },
   {
-    path: '/Login',
+    path: '/activities-alan-creative-2024/Login',
     element: <Login />,
   },
   {
-    path: '/Register',
+    path: '/activities-alan-creative-2024/Register',
     element: <Register />,
   }
 ])

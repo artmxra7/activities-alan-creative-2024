@@ -15,7 +15,7 @@ const debouncedDataProfile = debounce(async (setDataProfile, setLoading, navigat
       const response = await api.get('/profile/' + token);
 
       if (response.data === 401) {
-        navigate('/Login');
+        navigate('/activities-alan-creative-2024/Login');
       } else {
         const { namauser, email, no_telp, Jenis_Kelamin, tgllahir, gambar } = response.data;
         setDataProfile({
@@ -31,7 +31,7 @@ const debouncedDataProfile = debounce(async (setDataProfile, setLoading, navigat
 
     } catch (err) {
       if(err.response.status === 401 || err.response.status === 500) {
-        navigate('/Login');
+        navigate('/activities-alan-creative-2024/Login');
       }
     } finally {
       setLoading(false);
@@ -177,7 +177,7 @@ const Profile = () => {
         localStorage.removeItem('token')
         sessionStorage.removeItem('buttonIndex')
         sessionStorage.removeItem('role')
-        window.location.href = '/';
+        window.location.href = '/activities-alan-creative-2024/';
     }
 
     return(
@@ -199,7 +199,7 @@ const Profile = () => {
                     <>
                     <div className="p-4 flex justify-center items-center">
                         <input type="file" name="gambar" accept='image/*' style={{display: 'none'}} onChange={handleFileChange} ref={inputRef}/>
-                        <img src={DataProfile.gambar ? DataProfile.previewGambar : "No-image-found.jpg"} className='rounded-lg w-50 border shadow-md' onClick={handleClick}/>
+                        <img src={DataProfile.gambar ? DataProfile.previewGambar : "/activities-alan-creative-2024/No-image-found.jpg"} className='rounded-lg w-50 border shadow-md' onClick={handleClick}/>
                     </div>
                     <div className="p-4">
                         <h1 className='text-xl text-center mb-2 font-bold'>Biodata Diri</h1>

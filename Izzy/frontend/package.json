@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "homepage": "https://github.com/IzzyAhnaf/activities-alan-creative-2024",
+  "homepage": "https://izzyahnaf.github.io/activities-alan-creative-2024/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -42,6 +42,7 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "postcss": "^8.4.33",
     "tailwindcss": "^3.4.1",
-    "vite": "^5.0.11"
+    "vite": "^5.0.11",
+    "vite-plugin-react-refresh": "^1.0.0"
   }
 }

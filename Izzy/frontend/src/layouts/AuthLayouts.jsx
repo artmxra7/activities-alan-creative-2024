@@ -47,7 +47,7 @@ const Navigation = ({ type }) => {
         <p className="text-sm mt-5 text-center">
         Belum memiliki akun?{" "}
   
-        <Link to="/Register" className="text-blue-600 hover:font-bold">
+        <Link to="/activities-alan-creative-2024/Register" className="text-blue-600 hover:font-bold">
           Daftar</Link>
   
         </p>
@@ -57,7 +57,7 @@ const Navigation = ({ type }) => {
         <p className="text-sm mt-5 text-center">
         Sudah memiliki akun?{" "}
   
-        <Link to="/Login" className="text-blue-600 hover:font-bold">
+        <Link to="/activities-alan-creative-2024/Login" className="text-blue-600 hover:font-bold">
         Login</Link>
         </p>
       )

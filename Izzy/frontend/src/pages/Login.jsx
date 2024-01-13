@@ -43,18 +43,18 @@ const Login = () => {
             setErrorLogin(false)
             window.localStorage.setItem('token', response.data.token)
             sessionStorage.setItem('role', response.data.role)
-            response.data.role === 'User' ? navigate('/') : response.data.role === 'admin' ? navigate('/Admin') : navigate('/Staff')
+            response.data.role === 'User' ? navigate('/activities-alan-creative-2024/') : response.data.role === 'admin' ? navigate('/activities-alan-creative-2024/*/Admin') : navigate('/activities-alan-creative-2024/*/Staff')
         }
     }
 
     const LinkTo = () => {
         const ButtonIndex = sessionStorage.getItem('buttonIndex')
         if (ButtonIndex == 0) {
-            return '/*/Audio'
+            return '/activities-alan-creative-2024/*/Home/Audio'
         } else if (ButtonIndex == 1) {
-            return '/*/Monitor'
+            return '/activities-alan-creative-2024/*/Home/Monitor'
         } else if (ButtonIndex == 2) {
-            return '/*/PCComponent'
+            return '/activities-alan-creative-2024/*/Home/PCComponent'
         }
     }
     
