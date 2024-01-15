@@ -1,0 +1,29 @@
+Algoritma:
+1.Guru mulai dari siswa pertama.
+2.Guru memeriksa panjang kuku siswa saat ini.
+3.Jika panjang kuku lebih dari batas tertentu, guru menghukum siswa tersebut.
+4.Jika panjang kuku tidak melebihi batas, guru memuji siswa tersebut.
+5.Guru melanjutkan langkah-langkah 2-4 untuk siswa berikutnya hingga semua siswa diperiksa.
+
+Inisialisasi:
+  - JumlahSiswa = 40
+  - BatasPanjangKuku = 2  // Misalnya, batas panjang kuku yang diizinkan
+
+For i = 1 to JumlahSiswa:
+  // Guru memeriksa siswa ke-i
+  PanjangKukuSiswa = getPossiblyFromUserOrOtherSource(i)
+
+  If PanjangKukuSiswa > BatasPanjangKuku:
+    // Guru menghukum siswa
+    HukumSiswa(i)
+  Else:
+    // Guru memuji siswa
+    PujiSiswa(i)
+
+Function HukumSiswa(siswaIndex):
+  // Implementasi hukuman untuk siswa dengan indeks siswaIndex
+  console.log("Siswa dengan indeks", siswaIndex, "mempunyai kuku yang panjang. Guru memberikan hukuman.")
+
+Function PujiSiswa(siswaIndex):
+  // Implementasi pujian untuk siswa dengan indeks siswaIndex
+  console.log("Siswa dengan indeks", siswaIndex, "memiliki kuku yang rapi. Guru memberikan pujian.")
