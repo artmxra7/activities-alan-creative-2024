@@ -7,7 +7,7 @@ import LoginPage from './Pages/login.jsx'
 import ErrorPage from './Pages/404.jsx'
 const router = createBrowserRouter([
   {
-    path: '/login',
+    path: '/',
     element: <LoginPage />,
     errorElement: <ErrorPage/>,
     
