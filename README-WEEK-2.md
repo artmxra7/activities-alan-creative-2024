@@ -7,7 +7,7 @@ Selamat sudah melalui kegiatan pekan pertama! Pekan kedua ini kita akan berkenal
 dan melatih kemampuan logika dan pengolahan data dalam programming. Di pekan ini, kamu akan bertemu dengan sangat banyak kode dan istilah yang digunakan dalam pemrograman atau khususnya pada JavaScript.
 
 ## Metode Pengumpulan Tugas
-
+Untuk seluruh tugas week 2, buatlah sebuah folder baru dengan nama alan-p0-w2.
 Tugas dikumpulkan harian.
 
 
