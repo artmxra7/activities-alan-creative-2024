@@ -1,0 +1,9 @@
+untuk di diminggu ini skill yang sudah saya miliki dalam styling css di react sudah mulai banyak
+mendapat banyak pelajaran baru seperti membuat 3d carousel dengan tailwinds pada hari pertama dan 
+ketiga memang mengalamibeberapa kesulitan seperti pada tombol kiri di image carousel nya tidak tampil 
+dan pada hari keempat saya bisa memperbaiki hal tersebut dan jadi 3d carousel tapi tidak sampai situ 
+saya juga kesulitan saya membuat bottom navigation nya error untuk tampilan mobile dan untuk hari 
+terakhir di minggu ini mungkin ada kesulitan lagi di bagian hosting web saya mungkin kedepannya akan 
+saya perbaiki untuk web yang akan di hosting ini. tapi di samping semua masalah ini saya tertolong 
+dengan teman teman saya yang ceria jadi bisa sedikit terbantu karena saya menjadi enjoy dalam melakukan 
+challanges - challanges yang diberikan selama minggu ini,

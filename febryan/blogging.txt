@@ -1,0 +1,46 @@
+ 
+
+
+
+PKL Tapi ini minggu Pertama 
+
+        Hello guys Kenalin nama gw Febryan dan kali ini gw pen ceritain tentang bagaimana hari hari gw
+    pas gw pkl di salah satu software house di depok , hari pertama gw dateng ke kantor sama temen temen
+    gw tapi gw sendiri kayaknya yang agak planga plongo , jujur aja gw gk terlalu bisa ngoding dan agak 
+    panik pas hari pertama, yaaa tau lah gmn rasanya hari pertama lu ke kantor dengan adanya orang orang
+    yang gk lu kenal pasti deg - degan asli, tapi akhirnya salah satu team hr yang nanganin gw bilang untuk
+    hari pertama kalian belajar dulu apa yang akan dilakuin untuk besok, akhirnya kita belajar wordpress 
+    sesuai dengan arahan pada pertemuan sebelu gw PKL
+
+        Hari Kedua mennn azekk
+    seems nothing happen tapi kita punya task yaitu nyoba nyoba elemet di elementor wordpress, karena
+    waktu itu elementor harus bayar jdi kita cari cara gimana caranya ngakali plug in buat bisa pake     
+    element element di situ, akhirnya cara terakhir yaitu dari pembimbing gw kita harus ngecracck
+    elementor pro jadinya kita bisa pake elementor pro
+
+        hari ketiga 
+    hari ini kita dikasih task buatnyamain atau buat clone dari tampilan di mockup yang sudah dikasih
+    aman aman aja sih gk ada yang special kayak ngerjain tugas biasa
+
+        hari keempat 
+    aman aja ya gk ada yg spesial wkwkkwkwk
+
+
+    MINGGU KE -2 (MINGGU INI )
+
+   hari senin kita install vite dan something something untuk membuat react js app 
+    dan ya kita dibikin untuk buat something something
+
+   	hari selasa
+    hari ini mulai struggle banyak banget kendala karena bingung mau pake tailwind apa engga itu aja sih
+
+	hari rabu
+    hari mulai challage dan agak mulai pusing karena gk pernah pake react js sebelumnya dan jallanin aja dulu
+    
+	hari Kamis
+    Kacau
+
+	hari jumat (hari ini)
+    rasa ingin marah marah mulai meluap pas di push di github dan di coba di liat di git pages page nya putih doang
+    kacauuuu, abis ini balik pen tidur ajalah bangung marah marah ae di voichat valo :V	
+	

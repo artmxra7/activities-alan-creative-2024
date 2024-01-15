@@ -1,0 +1,25 @@
+/* File CSS Anda */
+@media (min-width: 768px) {
+
+    /* Menyembunyikan Navigation pada laptop dan PC */
+    .bg-white {
+        display: none;
+    }
+}
+
+.footer {
+    height: 80px;
+    /* Set the default height for the footer */
+    background-color: #333;
+    /* Set the background color */
+    color: #fff;
+    /* Set the text color */
+}
+
+/* Media query for screens with a maximum width of 767px (typical mobile devices) */
+@media (max-width: 767px) {
+    .footer {
+        height: 40px;
+        /* Set a smaller height for mobile devices */
+    }
+}

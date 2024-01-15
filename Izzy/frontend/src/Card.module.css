@@ -1,0 +1,12 @@
+.card {
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    width: 54rem;
+    border-radius: 20px;
+  }
+  
+  .card img {
+    width: 100%;
+    border-radius: 20px;
+  }
