@@ -20,7 +20,7 @@ const Home = () => {
     const navigate = useNavigate();
 
     const handleClick = (index) => {
-        const paths = ['/activities-alan-creative-2024/*/Home/Audio', '/activities-alan-creative-2024/*/Home/Monitor', 'activities-alan-creative-2024/*/Home/PCComponent'];
+        const paths = ['/activities-alan-creative-2024/*/Home/Audio', '/activities-alan-creative-2024/*/Home/Monitor', '/activities-alan-creative-2024/*/Home/PCComponent'];
         sessionStorage.setItem('buttonIndex', JSON.stringify(index));
         navigate(paths[index]); 
     }
@@ -83,7 +83,7 @@ const Home = () => {
                         <Routes>
                             <Route path='*/Home/Audio' element={<AudioPages/>}/>
                             <Route path='*/Home/Monitor' element={<MonitorPages/>}/>
-                            <Route path='*/Home/PcComponent' element={<PCComponentPages/>}/>
+                            <Route path='*/Home/PCComponent' element={<PCComponentPages/>}/>
                         </Routes>
                     </div>
                 </div>
