@@ -6,14 +6,10 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import LoginPage from './Pages/login.jsx'
 import ErrorPage from './Pages/404.jsx'
 const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <div>Hello saya mencoba berpindah link</div>,
-    errorElement: <ErrorPage/>,
-    
-  }, {
+{
     path: '/login',
     element: <LoginPage />,
+    errorElement: <ErrorPage/>,
   },{
     path: '/register',
     element: <RegisterPage />,
