@@ -64,13 +64,14 @@ const Navbar = () => {
         //     case 2:
         //       return '/activities-alan-creative-2024/*/Home/PCComponent';
         //   }
-        return '/activities-alan-creative-2024/';
+        // return '/activities-alan-creative-2024/*/Home/';
+        console.log(ButtonIndex);
         } else if (role === 'admin') {
           return '/activities-alan-creative-2024/*/Admin';
         } else if (role === 'staff') {
           return '/activities-alan-creative-2024/*/Staff';
         }
-      };
+    };
 
     useEffect(() => {
         Profile(setLoginStat, setDatUser, setLoading);
