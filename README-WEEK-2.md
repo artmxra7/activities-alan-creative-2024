@@ -1,5 +1,5 @@
 
-# Alan Creative Phase 0 Week 1: The World of JavaScript
+# Alan Creative Phase 0 Week 2: The World of JavaScript
 
 
 
