@@ -6,8 +6,6 @@
 Selamat sudah melalui kegiatan pekan pertama! Pekan kedua ini kita akan berkenalan dengan JavaScript,
 dan melatih kemampuan logika dan pengolahan data dalam programming. Di pekan ini, kamu akan bertemu dengan sangat banyak kode dan istilah yang digunakan dalam pemrograman atau khususnya pada JavaScript.
 
-![Let's start!](assets/start.png)
-
 ## Metode Pengumpulan Tugas
 
 Tugas dikumpulkan harian.
@@ -30,7 +28,7 @@ Tugas :
 Hari ini masuklah kita ke bahasa pemrograman JavaScript. Yuk kenalan dengan JavaScript dan langsung coba keseruannya!
 
 Materi & Referensi :
-  
+
 - :notebook_with_decorative_cover:
 [Memahami dan menggunakan dasar pemrograman dengan JavaScript](modules/js-first-time.md)
 - :notebook_with_decorative_cover:
@@ -83,14 +81,6 @@ Tugas :
 
 ## Jumat - Solve Problems menggunakan JavaScript
 
-- :anchor:
-[[**Exercises 10**] Bandingkan Angka](/modules/challenge-bandingkan-angka.md)
-- :anchor:
-[[**Exercises 11**] Balik Kata](/modules/challenge-balik-kata.md)
-- :anchor:
-[[**Exercises 12**] Konversi Menit](/modules/challenge-konversi-menit.md)
-- :anchor:
-[[**Exercises 13**] X dan O](/modules/challenge-x-dan-o.md)
 
 
 Selamat berpetualang dengan logika dan data! Jika ada hal yang perlu ditanyakan, langsung saja berdiskusi di grup ya.
@@ -98,5 +88,3 @@ Selamat berpetualang dengan logika dan data! Jika ada hal yang perlu ditanyakan,
 Salam,
 
 Tim Alan Creative
-
-![Hacktiv8 Banner](assets/banner.png)
