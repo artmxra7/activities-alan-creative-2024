@@ -64,6 +64,9 @@ const Second = ({ onSubmit }) => {
                 Kirim
               </button>
             </div>
+            <p className="text-white text-center mt-4">
+            Klik <Link to="/lglfrm" className="text-blue-500">daftar</Link> jika belum punya akun
+          </p>
           </form>
         </div>
       </div>

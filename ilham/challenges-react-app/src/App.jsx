@@ -3,6 +3,7 @@ import Home from "./pages/home";
 import Formp from "./pages/form";
 import Table from "./pages/absen";
 import Formrg from "./pages/lglfrm";
+import ProgramDescription from "./pages/program";
 import Profile from "./pages/profile";
 import React from "react";
 
@@ -16,6 +17,7 @@ const App = () => {
           <Route path="/absen" element={<Table />}></Route>
           <Route path="/lglfrm" element={<Formrg/>}></Route>
           <Route path="/profile" element={<Profile/>}></Route>
+          <Route path="/program" element={<ProgramDescription/>}></Route>
         </Routes>
       </Router>
     </div>

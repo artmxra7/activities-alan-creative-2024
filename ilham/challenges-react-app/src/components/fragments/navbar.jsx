@@ -5,7 +5,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navLinks = [
     { href: "#home", label: "Home" },
-    { href: "#about-us", label: "program" },
+    { href: "/program", label: "program" },
     { href: "#", label: "Data pendaftar" },
     { href: "#contact-us", label: "Contact Us" },
   ];

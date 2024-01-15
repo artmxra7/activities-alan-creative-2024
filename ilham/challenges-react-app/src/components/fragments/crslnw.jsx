@@ -48,7 +48,7 @@ export default class Example extends Component {
 
   render() {
     return (
-      <div style={{ width: "80%", height: "500px", margin: "0 auto" }}>
+      <div style={{ position: "relative", width: "80%", height: "500px", margin: "0 auto" }}>
         <Carousel
           slides={this.slides}
           goToSlide={this.state.goToSlide}
@@ -58,13 +58,28 @@ export default class Example extends Component {
         />
         <div
           style={{
-            margin: "0 auto",
-            marginTop: "2rem",
-            width: "50%",
+            position: "absolute",
+            top: "50%",
+            transform: "translateY(-50%)",
+            width: "100%",
             display: "flex",
-            justifyContent: "space-around"
+            justifyContent: "space-between",
+            padding: "0 20px",
+            boxSizing: "border-box"
           }}
         >
+          <button
+            style={{ position: "absolute", left: 0, top: "50%", transform: "translateY(-50%)" }}
+            onClick={() => this.setState({ goToSlide: this.state.goToSlide - 1 })}
+          >
+            {'<'}
+          </button>
+          <button
+            style={{ position: "absolute", right: 0, top: "50%", transform: "translateY(-50%)" }}
+            onClick={() => this.setState({ goToSlide: this.state.goToSlide + 1 })}
+          >
+            {'>'}
+          </button>
         </div>
       </div>
     );
