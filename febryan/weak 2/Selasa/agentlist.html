@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Daftar Karakter Game</title>
+    <style>
+        /* Customize your styles here */
+        .character-card {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <h2>Daftar Karakter Game</h2>
+        <div>
+            <label for="classFilter">Filter by Class:</label>
+            <select id="classFilter" class="form-control" onchange="filterCharacters()">
+                <option value="all">All</option>
+                <option value="melee">Melee</option>
+                <option value="ranged">Ranged</option>
+                <!-- Add more options for other classes -->
+            </select>
+        </div>
+
+        <div id="characterList" class="row mt-3">
+            <!-- Character cards will be dynamically added here -->
+        </div>
+    </div>
+
+    <script>
+        // Sample data for characters
+        const characters = [
+            { name: "msokov", class: "melee", image: "./image/moskov.webp" },
+            { name: "Archer", class: "ranged", image: "./image/atlas.jpg" },
+            { name: "Mage", class: "ranged", image: "mage.jpg" },
+            // Add more characters with different classes
+        ];
+
+        // Function to render character cards based on the current filter
+        function renderCharacters(filter) {
+            const characterListElement = document.getElementById("characterList");
+            characterListElement.innerHTML = "";
+
+            characters.forEach(character => {
+                if (filter === "all" || character.class === filter) {
+                    const card = document.createElement("div");
+                    card.className = "col-md-4 character-card";
+                    card.innerHTML = `
+                    <div class="card">
+                        <img src="${character.image}" class="card-img-top" alt="${character.name}">
+                        <div class="card-body">
+                            <h5 class="card-title">${character.name}</h5>
+                            <p class="card-text">Class: ${character.class}</p>
+                        </div>
+                    </div>
+                `;
+                    characterListElement.appendChild(card);
+                }
+            });
+        }
+
+        // Function to handle filter change
+        function filterCharacters() {
+            const classFilter = document.getElementById("classFilter").value;
+            renderCharacters(classFilter);
+        }
+
+        // Initial rendering
+        renderCharacters("all");
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proxytia Game</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #16c4b6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 28rem;
+            margin: 2rem auto;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.375rem;
+            padding: 1.5rem;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
+
+        .label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #4a5568;
+        }
+
+        .label2 {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #4a5568;
+            margin-top: 12px;
+        }
+
+        .input {
+            margin-top: 0.25rem;
+            padding: 0.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.25rem;
+            width: 100%;
+        }
+
+        .button {
+            margin-top: 20px;
+            background-color: #4299e1;
+            color: #ffffff;
+            padding: 0.75rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #3182ce;
+        }
+
+        .feedback {
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            color: #4a5568;
+        }
+
+        .input2 {
+            margin-top: 0.25rem;
+            padding: 0.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.25rem;
+            width: 96%;
+        }
+    </style>
+    <script>
+        function mulaiGame() {
+            // Mendapatkan nilai dari input nama dan peran
+            var nama = document.getElementById("nama").value;
+            var peran = document.getElementById("peran").value;
+
+            // Mengecek apakah variabel peran sudah diisi
+            if (nama === "") {
+                alert("Tentukan Nama mu dan pilih Peranmu untuk memulai game");
+            } else {
+                // Mengecek peran dan memberikan respon sesuai peran
+                if (peran === "Ksatria") {
+                    alert("Selamat datang di Dunia Proxytia, " + nama + "!\nHalo Ksatria " + nama + ", kamu dapat menyerang dengan senjatamu!");
+                } else if (peran === "Tabib") {
+                    alert("Selamat datang di Dunia Proxytia, " + nama + "!\nHalo Tabib " + nama + ", kamu akan membantu temanmu yang terluka.");
+                } else if (peran === "Penyihir") {
+                    alert("Selamat datang di Dunia Proxytia, " + nama + "!\nHalo Penyihir " + nama + ", ciptakan keajaiban untuk membantu kemenanganmu!");
+                } else if (peran == "marksman") {
+                    alert("Selamat datang di Dunia Proxytia, " + nama + "!\nHalo Marksman " + nama + ", ciptakan keajaiban untuk membantu kemenanganmu!");
+                }
+                else if (peran == "tanker") {
+                    alert("Selamat datang di Dunia Proxytia, " + nama + "!\nHalo Tanker " + nama + ", ciptakan keajaiban untuk membantu kemenanganmu!");
+                }
+                else {
+                    alert("Peran yang dipilih tidak valid. Pilih antara Ksatria, Tabib, marskman, tanker atau Penyihir.");
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Proxytia Game</h1>
+            <label class="label" for="nama">Nama:</label>
+            <input class="input2" type="text" id="nama" placeholder="Masukkan Nama" autocomplete="off">
+
+            <label class="label2" for="peran">Peran:</label>
+            <select class="input" id="peran">
+                <option value="">Pilih Peran</option>
+                <option value="Ksatria">Ksatria</option>
+                <option value="Tabib">Tabib</option>
+                <option value="Penyihir">Penyihir</option>
+                <option value="marksman">marksman</option>
+                <option value="tanker">tanker</option>
+            </select>
+
+            <button class="button" onclick="mulaiGame()">Mulai Game</button>
+</body>
+</div>
+</div>
+
+</html>
