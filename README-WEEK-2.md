@@ -1,5 +1,5 @@
 
-# Alan Creative Phase 0 Week 1: The World of JavaScript
+# Alan Creative Phase 0 Week 2: The World of JavaScript
 
 
 
@@ -75,12 +75,20 @@ Materi & Referensi :
 Tugas :
 
 - :anchor:
-[[**Exercises 8**] JavaScript Building Blocks: Codecademy JavaScript Course (Unit 3 - Functions)](https://www.codecademy.com/learn/learn-javascript)
 - :anchor:
 [[**Exercises 9**] Berlatih Penggunaan Functions](modules/anchor-basic-function.md)
 
 ## Jumat - Solve Problems menggunakan JavaScript
 
+# Live coding
+- :anchor:
+[[**Exercises 10**] Bandingkan Angka](/modules/challenge-bandingkan-angka.md)
+- :anchor:
+[[**Exercises 11**] Balik Kata](/modules/challenge-balik-kata.md)
+- :anchor:
+[[**Exercises 12**] Konversi Menit](/modules/challenge-konversi-menit.md)
+- :anchor:
+[[**Exercises 13**] X dan O](/modules/challenge-x-dan-o.md)
 
 
 Selamat berpetualang dengan logika dan data! Jika ada hal yang perlu ditanyakan, langsung saja berdiskusi di grup ya.
