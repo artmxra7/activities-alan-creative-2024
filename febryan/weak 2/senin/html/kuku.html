@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuku Checker App</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7fafc;
+        }
+
+        .container {
+            max-width: 28rem;
+            margin: 2rem auto;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.375rem;
+            padding: 1.5rem;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
+
+        .label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #4a5568;
+        }
+
+        .input {
+            margin-top: 0.25rem;
+            padding: 0.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.25rem;
+            width: 100%;
+        }
+
+        .button {
+            margin-top: 20px;
+            background-color: #4299e1;
+            color: #ffffff;
+            padding: 0.75rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #3182ce;
+        }
+
+        .feedback {
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            color: #4a5568;
+        }
+
+        .input2 {
+            margin-top: 0.25rem;
+            padding: 0.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.25rem;
+            width: 96%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <h1 class="text-2xl font-bold mb-4">Razia kuku Hayolohhh</h1>
+            <label class="label">Pilih Siswa:</label>
+            <select id="selectedSiswa" class="input">
+                <!-- Options will be added using JavaScript -->
+            </select>
+            <label class="label">Masukkan Panjang Kuku (cm):</label>
+            <input type="number" id="panjangKuku" class="input2">
+            <button id="checkButton" class="button">Periksa Kuku Siswa</button>
+            <div id="feedbackContainer" class="feedback"></div>
+        </div>
+    </div>
+
+    <script>
+        const JumlahSiswa = 40;
+        const BatasPanjangKuku = 2;
+
+        // Populate the select options
+        const selectSiswa = document.getElementById('selectedSiswa');
+        for (let i = 1; i <= JumlahSiswa; i++) {
+            const option = document.createElement('option');
+            option.value = i;
+            option.textContent = i;
+            selectSiswa.appendChild(option);
+        }
+
+        // Event listener for the button click
+        document.getElementById('checkButton').addEventListener('click', () => {
+            const selectedSiswa = parseInt(document.getElementById('selectedSiswa').value);
+            const panjangKuku = parseFloat(document.getElementById('panjangKuku').value);
+            const feedbackContainer = document.getElementById('feedbackContainer');
+            const newFeedbacks = [];
+
+            // Validasi apakah panjang kuku valid (non-negatif)
+            if (panjangKuku === 0 || isNaN(panjangKuku)) {
+                newFeedbacks.push("Anak anda disabilitas?");
+            } else if (panjangKuku > BatasPanjangKuku) {
+                newFeedbacks.push(`Siswa nomer ${selectedSiswa} memiliki kuku yang panjang. Guru memberikan hukuman.`);
+            } else {
+                newFeedbacks.push(`Siswa nomer ${selectedSiswa} memiliki kuku yang rapi. Guru memberikan pujian.`);
+            }
+
+            feedbackContainer.innerHTML = newFeedbacks.map(feedback => `<p>${feedback}</p>`).join('');
+        });
+    </script>
+</body>
+
+</html>
