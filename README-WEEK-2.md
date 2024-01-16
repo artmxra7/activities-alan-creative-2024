@@ -80,7 +80,7 @@ Tugas :
 
 ## Jumat - Solve Problems menggunakan JavaScript
 
-- :anchor: Live coding
+# Live coding
 - :anchor:
 [[**Exercises 10**] Bandingkan Angka](/modules/challenge-bandingkan-angka.md)
 - :anchor:
