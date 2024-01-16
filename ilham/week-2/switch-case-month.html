@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Format Tanggal</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .container {
+      max-width: 400px;
+      margin: 100px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .btn-primary {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2 class="text-center mb-4">Format Tanggal</h2>
+    <form>
+      <div class="form-group">
+        <label for="tanggal">Tanggal:</label>
+        <input type="number" class="form-control" id="tanggal" min="1" max="31" placeholder="Masukkan Tanggal">
+      </div>
+
+      <div class="form-group">
+        <label for="bulan">Bulan:</label>
+        <input type="number" class="form-control" id="bulan" min="1" max="12" placeholder="Masukkan Bulan">
+      </div>
+
+      <div class="form-group">
+        <label for="tahun">Tahun:</label>
+        <input type="number" class="form-control" id="tahun" min="1900" max="2200" placeholder="Masukkan Tahun">
+      </div>
+
+      <button type="button" class="btn btn-primary" onclick="formatTanggal()">Format Tanggal</button>
+    </form>
+
+    <p id="hasil" class="mt-3"></p>
+  </div>
+
+  <script>
+    function formatTanggal() {
+      var tanggalInput = document.getElementById('tanggal').value;
+      var bulanInput = document.getElementById('bulan').value;
+      var tahunInput = document.getElementById('tahun').value;
+
+      var tanggal = parseInt(tanggalInput);
+      var bulan = parseInt(bulanInput);
+      var tahun = parseInt(tahunInput);
+
+      if (isNaN(tanggal) || isNaN(bulan) || isNaN(tahun) ||
+          tanggal < 1 || tanggal > 31 ||
+          bulan < 1 || bulan > 12 ||
+          tahun < 1900 || tahun > 2200) {
+        alert('Mohon masukkan tanggal, bulan, dan tahun yang valid.');
+        return; 
+      }
+
+      var namaBulan;
+
+      switch (bulan) {
+        case 1:
+          namaBulan = 'Januari';
+          break;
+        case 2:
+          namaBulan = 'Februari';
+          break;
+        case 3:
+          namaBulan = 'Maret';
+          break;
+        case 4:
+          namaBulan = 'April';
+          break;
+        case 5:
+          namaBulan = 'Mei';
+          break;
+        case 6:
+          namaBulan = 'Juni';
+          break;
+        case 7:
+          namaBulan = 'Juli';
+          break;
+        case 8:
+          namaBulan = 'Agustus';
+          break;
+        case 9:
+          namaBulan = 'September';
+          break;
+        case 10:
+          namaBulan = 'Oktober';
+          break;
+        case 11:
+          namaBulan = 'November';
+          break;
+        case 12:
+          namaBulan = 'Desember';
+          break;
+        default:
+          namaBulan = 'Bulan tidak valid';
+      }
+
+      var hasil = tanggal + ' ' + namaBulan + ' ' + tahun;
+
+    
+      console.log(hasil);
+
+      alert('Hasil: ' + hasil);
+    }
+  </script>
+
+  <!-- Tambahkan script Bootstrap JS di sini (optional, tergantung kebutuhan) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
