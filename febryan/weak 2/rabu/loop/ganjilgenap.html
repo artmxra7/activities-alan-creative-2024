@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ganjilgenap</title>
+</head>
+
+<body>
+    <p id="output"></p>
+
+    <script>
+
+        let output = '';
+
+
+        for (let i = 1; i <= 100; i++) {
+            if (i % 2 === 0) {
+                output += `${i} adalah GENAP<br>`;
+                console.log(`${i} adalah GENAP`);
+            } else {
+                output += `${i} adalah GANJIL<br>`;
+                console.log(`${i} adalah GANJIL`);
+            }
+        }
+
+
+        for (let i = 1; i <= 100; i += 2) {
+            if (i % 3 === 0) {
+                output += `${i} adalah 3 kelipatan 3<br>`;
+                console.log(`${i} adalah 3 kelipatan 3`);
+            }
+        }
+
+        for (let i = 1; i <= 100; i += 5) {
+            if (i % 6 === 0) {
+                output += `${i} adalah 6 kelipatan 6<br>`;
+                console.log(`${i} adalah 6 kelipatan 6`);
+            }
+        }
+
+
+        for (let i = 1; i <= 100; i += 9) {
+            if (i % 10 === 0) {
+                output += `${i} adalah 10 kelipatan 10<br>`;
+                console.log(`${i} adalah 10 kelipatan 10`);
+            }
+        }
+
+
+        document.getElementById('output').innerHTML = output;
+    </script>
+</body>
+
+</html>

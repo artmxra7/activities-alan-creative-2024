@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="output"></p>
+
+    <script>
+
+        let output = 'LOOPING PERTAMA<br>';
+        let i = 0;
+        while (i < 20) {
+            i += 2;
+            console.log(`${i} - I love coding`);
+            output += `${i} - I love coding<br>`;
+        }
+
+
+        output += 'LOOPING KEDUA<br>';
+        while (i > 0) {
+            output += `${i} - I will become a frontend developer<br>`;
+            console.log(`${i} - I will become a frontend developer`);
+            i -= 2;
+        }
+
+        document.getElementById('output').innerHTML = output;
+    </script>
+</body>
+
+</html>
