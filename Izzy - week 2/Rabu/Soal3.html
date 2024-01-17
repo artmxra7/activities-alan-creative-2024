@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Looping</title>
+</head>
+<body>
+    
+    <div>
+        <h2>2. Menyusun Barisan Bintang</h2>
+        <p id="resp"></p>
+        <br>
+        <h2>2. Menyusun Barisan Bintang Dengan Nested Looping</h2>
+        <p id="resp2"></p>
+        <br>
+        <h2>2. Menyusun Barisan Bintang Dengan Nested Looping</h2>
+        <p id="resp3"></p>
+    </div>
+    <script>
+        var rows1 = 5;
+        const cl = (dat) => console.log(dat);
+        const resp = document.getElementById('resp');
+        const resp2 = document.getElementById('resp2');
+        const resp3 = document.getElementById('resp3');
+        // 
+        for (var i = 1; i <= rows1; i++) {
+            resp.innerHTML += '*<br>';
+        }
+
+        var rows2 = 5;
+
+        for (var i = 1; i <= rows2; i++) {
+            var asterisks = '';
+            for (var j = 1; j <= rows2; j++) {
+                asterisks += '*';
+            }
+            resp2.innerHTML += asterisks + '<br>';
+        }
+
+        var rows3 = 5;
+        for (var i = 1; i <= rows3; i++) {
+            var asterisks = '';
+            for (var j = 1; j <= i; j++) {
+                asterisks += '*';
+            }
+        resp3.innerHTML += asterisks + '<br>';
+        }
+
+    </script>
+</body>
+</html>

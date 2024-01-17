@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soal 1</title>
+    <script src="Soal 1.js" defer></script>
+    <style>
+        body{
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            animation: centerBody 1s ease-in-out;
+        }
+
+        div.container{
+            width: 500px;
+            margin: 0px auto;
+            text-align: center;
+            border: 2px solid black;
+            border-radius: 25px;
+            padding: 20px;
+            background-color: #bce2eb;
+            box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0.5);
+            animation: showDiv 0.5s ease-in-out;
+        }
+
+        div.skeleton > div{
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            align-items: center;
+        }
+
+
+        div.indexing > div{
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            align-items: center;
+        }
+
+        div.BSUSubStr > div{
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            align-items: center;
+        }
+
+        div.BSaCEL > div{
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            align-items: center;
+        }
+
+        input{
+            border-radius: 25px;
+            padding: 4px;
+        }
+
+        button{
+            border-radius: 25px;
+            padding: 4px;
+        }
+
+        @keyframes showDiv{
+            0% {
+                opacity: 0;
+            }
+            50%{
+                opacity: 0.5;
+            }
+            100%{
+                opacity: 1;
+            }
+
+        }
+
+        @keyframes centerBody{
+            0% {
+                margin: 0px auto;
+                height: 75vh;
+            }
+            100%{
+                margin: 0px auto;
+                height: 100vh;
+            }
+        }
+
+        @keyframes hideDiv{
+            0% {
+                opacity: 1;
+            }
+            50%{
+                opacity: 0.5;
+            }
+            100%{
+                opacity: 0;
+            }
+        }
+
+        @keyframes normalBody {
+            0% {
+                margin: 0px auto;
+                height: 100vh;
+            }
+            100%{
+                margin: 0px auto;
+                height: 75vh;
+            }
+        }
+    </style>
+</head>
+<body id="body">
+    <div class="container" id="container">
+        <div class="skeleton" id="skeleton">
+            <h1>Skeleton Code</h1>
+            <div>
+                <label for="">word</label><input type="text" name="" id="word">
+            </div>
+            <div>
+                <label for="">second</label><input type="text" name="" id="second">
+            </div>
+            <div>
+                <label for="">third</label><input type="text" name="" id="third">
+            </div>
+            <div>
+                <label for="">fourth</label><input type="text" name="" id="fourth">
+            </div>
+            <div>
+                <label for="">fifth</label><input type="text" name="" id="fifth">
+            </div>
+            <div>
+                <label for="">sixth</label><input type="text" name="" id="sixth">
+            </div>
+            <div>
+                <label for="">seventh</label><input type="text" name="" id="seventh">
+            </div>
+            <button type="button" onclick="resp1()">Resp</button>
+            <p id="resp1"></p>
+        </div>
+        <div class="indexing" id="indexing">
+            <h1>Indexing 1 by 1</h1>
+            <div>
+                <label for="">Word</label><input type="text" id="Typeword">
+            </div>
+            <button type="button" onclick="resp2()">Resp</button>
+            <div id="resp2"></div>
+        </div>
+        <div class="BSUSubStr" id="BSUSubStr">
+            <h1>Breaking Sentence (Again) using Substring</h1>
+            <div><label for="TypeWord">Word</label><input type="text" name="" id="TypeWord"></div>
+            <button type="button" onclick="resp3()">Resp</button>
+            <div id="resp3"></div>
+        </div>
+        <div class="BSaCEL" id="BSaCEL">
+            <h1>Breaking Sentence (yet Again) and Count Each Length</h1>
+            <div><label for="TypeWord2">Word</label><input type="text" name="" id="TypeWord2"></div>
+            <button type="button" onclick="resp4()">Resp</button>
+            <div id="resp4"></div>
+        </div>
+    </div>
+</body>
+</html>
