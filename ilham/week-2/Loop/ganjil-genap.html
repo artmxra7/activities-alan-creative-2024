@@ -9,19 +9,17 @@
     <div id="output"></div>
 
     <script>
-        // Perulangan 1 - 100 dengan pertambahan counter sebanyak 1
         var resultOutput = '';
 
         for (let counter = 1; counter <= 100; counter++) {
             if (counter % 2 === 0) {
-                resultOutput += 'GENAP<br>';
-                console.log('GENAP');
+                resultOutput += counter + 'GENAP<br>';
+                console.log(counter + 'GENAP<br>');
             } else {
-                resultOutput += 'GANJIL<br>';
-                console.log('GANJIL');
+                resultOutput +=counter + 'GANJIL<br>';
+                console.log(counter + 'GANJIL<br><br>');
             }
         }
-
         // Perulangan baru dengan pertambahan counter sebesar 2, 5, dan 9
         for (let counter = 1; counter <= 100; counter += 2) {
             if (counter % 3 === 0) {
