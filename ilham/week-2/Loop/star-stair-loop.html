@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menyusun Barisan Tangga Bintang Dengan Nested Looping</title>
+</head>
+<body>
+    <div id="output"></div>
+
+    <script>
+        var rows3 = 5; // input the number of rows
+        var resultOutput = '';
+
+        // Looping untuk menampilkan barisan tangga bintang dengan nested looping
+        for (var i = 1; i <= rows3; i++) {
+            var stars = '';
+            for (var j = 1; j <= i; j++) {
+                stars += '*';
+            }
+            resultOutput += stars + '<br>';
+            console.log(stars);
+        }
+
+        // Menampilkan hasil di dalam elemen HTML dengan innerHTML
+        document.getElementById('output').innerHTML = resultOutput;
+    </script>
+</body>
+</html>
