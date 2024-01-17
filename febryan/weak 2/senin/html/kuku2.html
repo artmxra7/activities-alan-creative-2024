@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuku Checker App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        div {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Kuku Checker App</h1>
+    <button onclick="checkKuku()">Periksa Kuku Siswa</button>
+    <div id="feedbackContainer"></div>
+
+    <script>
+        const JumlahSiswa = 40;
+        const BatasPanjangKuku = 2;
+
+        function checkKuku() {
+            const feedbackContainer = document.getElementById('feedbackContainer');
+            feedbackContainer.innerHTML = ''; // Mengosongkan kontainer setiap kali tombol ditekan
+
+            for (let i = 1; i <= JumlahSiswa; i++) {
+                // Simulasi panjang kuku dengan angka acak antara 0 dan 4
+                const panjangKuku = Math.floor(Math.random() * 5);
+
+                const feedbackElement = document.createElement('p');
+
+                if (panjangKuku > BatasPanjangKuku) {
+                    feedbackElement.innerText = `Siswa dengan indeks ${i} memiliki kuku yang panjang. Guru memberikan hukuman.`;
+                } else {
+                    feedbackElement.innerText = `Siswa dengan indeks ${i} memiliki kuku yang rapi. Guru memberikan pujian.`;
+                }
+
+                feedbackContainer.appendChild(feedbackElement);
+            }
+        }
+    </script>
+
+</body>
+
+</html>

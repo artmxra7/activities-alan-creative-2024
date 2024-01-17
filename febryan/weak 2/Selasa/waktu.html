@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Format Tanggal</title>
+</head>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #16c4b6;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 28rem;
+        margin: 2rem auto;
+    }
+
+    .card {
+        background-color: #ffffff;
+        border-radius: 0.375rem;
+        padding: 1.5rem;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    }
+
+    .label {
+        display: block;
+        font-size: 0.875rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        color: #4a5568;
+    }
+
+    .label2 {
+        display: block;
+        font-size: 0.875rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        color: #4a5568;
+        margin-top: 12px;
+    }
+
+    .input {
+        margin-top: 0.25rem;
+        padding: 0.5rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 0.25rem;
+        width: 100%;
+    }
+
+    .button {
+        margin-top: 20px;
+        background-color: #4299e1;
+        color: #ffffff;
+        padding: 0.75rem 1rem;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+        background-color: #3182ce;
+    }
+
+    .feedback {
+        margin-top: 1rem;
+        font-size: 0.875rem;
+        color: #4a5568;
+    }
+
+    .input2 {
+        margin-top: 0.25rem;
+        padding: 0.5rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 0.25rem;
+        width: 96%;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <form class="card" id="dateForm">
+            <label class="label" for="day">tanggal:</label>
+            <input class="input2" type="number" id="day" name="day" min="1" max="31" required>
+            <br>
+            <label class="label2" for="month">Bulan:</label>
+            <select class="input" id="month" name="month" required>
+                <option value="1">Januari</option>
+                <option value="2">Februari</option>
+                <option value="3">Maret</option>
+                <option value="4">April</option>
+                <option value="5">Mei</option>
+                <option value="6">Juni</option>
+                <option value="7">Juli</option>
+                <option value="8">Agustus</option>
+                <option value="9">September</option>
+                <option value="10">Oktober</option>
+                <option value="11">November</option>
+                <option value="12">Desember</option>
+            </select>
+            <br>
+            <label class="label2" for="year">Tahun:</label>
+            <input class="input2" type="number" id="year" name="year" min="1000" max="9999" required>
+            <br>
+            <button class="button" type="button" onclick="formatTanggal()">Format Tanggal</button>
+        </form>
+    </div>
+
+    <script>
+        function formatTanggal() {
+            var hari = parseInt(document.getElementById("day").value);
+            var bulan = parseInt(document.getElementById("month").value);
+            var tahun = document.getElementById("year").value;
+
+            // Memeriksa apakah tahun kosong
+            if (!tahun || isNaN(parseInt(tahun))) {
+                alert("Tahun tidak valid. Harap isi ulang tahun.");
+                return;
+            }
+
+            tahun = parseInt(tahun);
+
+            // Memeriksa apakah tanggal valid
+            if (hari < 1 || hari > 31) {
+                alert("Tanggal tidak valid. Harap isi ulang tanggal.");
+                return;
+            }
+            var namaBulan;
+            switch (bulan) {
+                case 1:
+                    namaBulan = "Januari";
+                    break;
+                case 2:
+                    namaBulan = "Februari";
+                    break;
+                case 3:
+                    namaBulan = "Maret";
+                    break;
+                case 4:
+                    namaBulan = "April";
+                    break;
+                case 5:
+                    namaBulan = "Mei";
+                    break;
+                case 6:
+                    namaBulan = "Juni";
+                    break;
+                case 7:
+                    namaBulan = "Juli";
+                    break;
+                case 8:
+                    namaBulan = "Agustus";
+                    break;
+                case 9:
+                    namaBulan = "September";
+                    break;
+                case 10:
+                    namaBulan = "Oktober";
+                    break;
+                case 11:
+                    namaBulan = "November";
+                    break;
+                case 12:
+                    namaBulan = "Desember";
+                    break;
+                default:
+                    namaBulan = "Bulan tidak valid";
+                    break;
+            }
+
+
+
+            alert(hari + " " + namaBulan + " " + tahun);
+            console.log(hari + " " + namaBulan + " " + tahun);
+        }
+    </script>
+</body>
+
+</html>

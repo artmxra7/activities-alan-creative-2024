@@ -1,0 +1,28 @@
+START
+
+FUNCTION washClothes(totalClothes):
+    DISPLAY "Washing " + totalClothes + " clothes..."
+
+    FOR i FROM 1 TO totalClothes DO
+        DISPLAY "Washing clothes " + i + "..."
+        // Proses mencuci pakaian dapat ditambahkan di sini
+    END FOR
+
+    DISPLAY "Washing complete!"
+
+END FUNCTION
+
+IF REQUEST_METHOD == "POST" THEN
+    totalClothes = GET_POST("totalClothes")
+
+    IF totalClothes < 20 THEN
+        DISPLAY "<p style='color: red;'>Baju kurang, tolong masukkan baju yang kurang.</p>"
+    ELSE
+        CALL washClothes(totalClothes)
+    END IF
+ELSE
+    DISPLAY "Invalid request."
+
+END IF
+
+END
