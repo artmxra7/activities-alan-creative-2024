@@ -76,7 +76,7 @@ Tugas :
 
 - :anchor:
 - :anchor:
-[[**Exercises 9**] Berlatih Penggunaan Functions](modules/anchor-basic-function.md)
+[[**Exercises 9**] Berlatih Penggunaan Functions](modules/penggunaan-function.md)
 
 ## Jumat - Solve Problems menggunakan JavaScript
 
