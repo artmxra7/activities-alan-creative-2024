@@ -1,5 +1,5 @@
 
-# Komponen Slider
+# Penggunaan function
 
 ![Header](assets/movie-app.png)
 
