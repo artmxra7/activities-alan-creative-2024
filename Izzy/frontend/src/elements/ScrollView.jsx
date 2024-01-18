@@ -9,7 +9,7 @@ const ScrollView = ({ data, formattedNumber }) => {
     // border: '1px solid #ccc',
     whiteSpace: 'nowrap', 
   };
-
+  
   return (
     <div style={scrollViewContainerStyle}>
       {data.map((item, index) => (
