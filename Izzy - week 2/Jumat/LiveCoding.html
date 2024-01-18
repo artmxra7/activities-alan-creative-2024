@@ -7,21 +7,29 @@
     <script src="LiveCoding.js" defer></script>
 </head>
 <body>
+    <center>
+    <h1>LiveCoding</h1>
     <div>
-        <label for=""></label><input type="text" name="" id="word">
-        <button type="button" id="resp1">Balik Kata</button>
+        <label for="word">Balik Kata </label><input type="text" name="" id="word">
+        <button type="button" onclick="Balikkata(document.getElementById('word').value)">Balik Kata</button>
+        <div id="resp1"></div>
     </div>
     <div>
-        <label for=""></label><input type="number" name="" id="angka1"><input type="number" name="" id="angka2">
-        <button type="button" id="resp2">Bandingkan Angka</button>
+        <label for="">Bandingkan Angka </label>
+        <input type="number" name="" id="angka1">
+        <input type="number" name="" id="angka2">
+        <button type="button" onclick="BandingkanAngka(document.getElementById('angka1').value,document.getElementById('angka2').value)">Bandingkan Angka</button>
+        <div id="resp2"></div>
     </div>
     <div>
-        <label for=""></label><input type="number" name="" id="detik">
-        <button type="button" id="resp3">Konversi Menit</button>
+        <label for="">Detik </label><input type="number" name="" id="detik">
+        <button type="button" onclick="konversiMenit(document.getElementById('detik').value)">Konversi Menit</button>
+        <div id="resp3"></div>
     </div>
     <div>
-        <label for=""></label><input type="text" name="" id="word2">
-        <button type="button" id="resp4">X dan O</button>
+        <label for="">X dan O</label><input type="text" name="" id="word2">
+        <button type="button" onclick="XdanO(document.getElementById('word2').value)">X dan O</button>
+        <div id="resp4"></div>
     </div>
 </body>
 </html>

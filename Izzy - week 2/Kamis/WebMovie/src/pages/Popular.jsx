@@ -4,16 +4,18 @@ import ScrollView from "../elements/Scrollview";
 import { debounce } from "lodash";
 
 const Popular = () => {
-    const [moviesImages, setMoviesImages] = useState([]);
+    const [MoviesShow, setMoviesShow] = useState([]);
+    const [Loading, setLoading] = useState(true);
 
     const fetchMovies = debounce(async () => {
         try{
             const response = await instance.get(URLPOPULARMOVIE + API_KEY, '&append_to_response=images');
-            setMoviesImages(response.data.results);
+            setMoviesShow(response.data.results);
+            setLoading(false);
         }catch(error){
             console.log(error)
         }
-    }, 100)
+    }, 10)
 
     useEffect(() => {
         fetchMovies();
@@ -21,7 +23,7 @@ const Popular = () => {
 
     return(
         <>
-            <ScrollView moviesImages={moviesImages}/>
+            <ScrollView MoviesShow={MoviesShow} Loading={Loading} TvShow={[]}/>
         </>
     )
 }

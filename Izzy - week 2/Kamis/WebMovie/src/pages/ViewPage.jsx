@@ -1,23 +1,38 @@
 import { debounce } from "lodash";
-import { API_KEY, URLMOVIE, URLMOVIECREDITS, instance } from "../api";
+import { API_KEY, URLMOVIE, URLMOVIECREDITS, URLTVSHOWCREDITS, URLTVSHOWS, instance } from "../api";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { IoStarSharp, IoStarOutline } from "react-icons/io5";
-
+import { MdArrowBackIosNew } from "react-icons/md";
+import { all } from "axios";
 
 const ViewPage = () => {
     const [movies, setMovies] = useState([]);
     const [credits, setCredits] = useState([]);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
     const { id } = useParams();
+    const { type } = useParams();
 
-    const fetchMovies = debounce( async() => {
+    const fetchMovies = debounce(async () => {
         try{
-            const response = await instance.get(URLMOVIE(id) + API_KEY + '&append_to_response=images');
-            const response2 = await instance.get(URLMOVIECREDITS(id) + API_KEY + '&append_to_response=images');
+            if(type === 'Movie'){
+                const [response, response2] = await Promise.all([
+                    instance.get(URLMOVIE(id) + API_KEY),
+                    instance.get(URLMOVIECREDITS(id) + API_KEY),
+                ])
             setMovies(response.data);
             setCredits(response2.data);
             setLoading(false);
+            }else if(type === 'Tv'){
+                const [response, response2] = await Promise.all([
+                    instance.get(URLTVSHOWS(id) + API_KEY),
+                    instance.get(URLTVSHOWCREDITS(id) + API_KEY),
+                ]);
+            setMovies(response.data);
+            setCredits(response2.data);
+            setLoading(false);
+            }
         }catch(error){
             console.log(error)
         } 
@@ -42,9 +57,10 @@ const ViewPage = () => {
         {loading ? (<p className="flex justify-center items-center text-5xl">Memuat...</p>) : (
         <div style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/w500/${movies.backdrop_path})`, 
         backgroundSize: 'cover', height: '100vh', zIndex: 1}}>
-            <div className="grid grid-cols-2">
+            <span className="md:fixed md:top-8 md:start-8 hidden md:block" style={{zIndex: 3, borderRadius: '50%', width: '50px', height: '50px', backgroundColor: 'rgba(0, 0, 0, 0.5)'}}><MdArrowBackIosNew size={30} color="white" className="text-white ms-2 mt-2.5 cursor-pointer" onClick={() => navigate(-1)} /></span>
+            <div className="grid grid-cols-2 md:grid-cols-3">
                 <img src={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`} className="ps-5 pt-5" style={{width: '300px', zIndex: 2}} alt="" />
-                <p className="text-white my-auto md:text-7xl text-6xl ms-6 md:ms-0" style={{zIndex: 2, fontFamily: 'Arial', fontWeight: 'bold'}}>{movies.title}</p>
+                <p className="text-white my-auto md:text-7xl text-2xl ms-6 md:ms-0 md:w-max" style={{zIndex: 2, fontFamily: 'Arial', fontWeight: 'bold'}}>{movies.title}</p>
             </div>
             <div className="w-full bg-white my-auto">
                 <div className="">
