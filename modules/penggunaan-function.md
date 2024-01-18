@@ -11,7 +11,7 @@ Buatlah website seperti gambar di atas menggunakan ReactJs
 
 
   Buatlah halaman yang memiliki komposisi
-- Statefful Component
+- Stateful Component
 - Fetch API
 - Menggunakan props untuk mengirim data
 
