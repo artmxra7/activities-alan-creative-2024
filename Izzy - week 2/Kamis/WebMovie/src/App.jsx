@@ -13,13 +13,13 @@ const App = () => {
     const Index = localStorage.getItem('WebAppHomeIndex') ? JSON.parse(localStorage.getItem('WebAppHomeIndex')) : 0;
     switch(Index){
       case 0:
-        navigate('/Intheatres');
+        navigate('/WebMovieExample/Intheatres');
         break;
       case 1:
-        navigate('/popular');
+        navigate('/WebMovieExample/popular');
         break;
       case 2:
-        navigate('/tvshow');
+        navigate('/WebMovieExample/tvshow');
         break;
     }
   }

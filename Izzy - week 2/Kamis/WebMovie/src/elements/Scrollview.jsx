@@ -52,7 +52,7 @@ const ScrollView = ({MoviesShow, Loading, TvShow}) => {
 
     const handleClick = (type, id) => {
         if (!mouseDown) {
-            navigate(`/ViewPage/${type}/${id}`);
+            navigate(`/WebMovieExample/ViewPage/${type}/${id}`);
         }
     };
 

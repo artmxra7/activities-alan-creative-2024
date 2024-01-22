@@ -11,13 +11,13 @@ const NavBar = () => {
     localStorage.setItem('WebAppHomeIndex', JSON.stringify(index));
     switch(index){
       case 0:
-        Navigate('/Intheatres');
+        Navigate('/WebMovieExample/Intheatres');
         break;
       case 1:
-        Navigate('/Popular');
+        Navigate('/WebMovieExample/Popular');
         break;
       case 2:
-        Navigate('/TvShow');
+        Navigate('/WebMovieExample/TvShow');
         break;
     }
   }
@@ -28,8 +28,8 @@ const NavBar = () => {
       const Index = localStorage.getItem('WebAppHomeIndex') ? JSON.parse(localStorage.getItem('WebAppHomeIndex')) : 0;
       Goto(Index);
     }else{
-      if(window.location.pathname !== `/Search/${search}`){
-        Navigate(`/Search/${search}`);
+      if(window.location.pathname !== `/WebMovieExample/Search/${search}`){
+        Navigate(`/WebMovieExample/Search/${search}`);
         localStorage.setItem('WebAppHomeIndex', JSON.stringify(3));
         document.getElementById('search').value = '';
       }

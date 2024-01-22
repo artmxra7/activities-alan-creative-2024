@@ -11,29 +11,29 @@ import Search from './pages/Search.jsx'
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/WebMovieExample/',
     element: <App />,
     children:[
       {
-        path: '/intheatres',
+        path: '/WebMovieExample/intheatres',
         element: <InTheatres />
       },
       {
-        path: '/Popular',
+        path: '/WebMovieExample/Popular',
         element: <Popular />
       },
       {
-        path: '/TvShow',
+        path: '/WebMovieExample/TvShow',
         element: <TvShow />
       },
       {
-        path: '/Search/:search',
+        path: '/WebMovieExample/Search/:search',
         element: <Search />
       }
     ]
   },
   {
-    path: '/ViewPage/:type/:id',
+    path: '/WebMovieExample/ViewPage/:type/:id',
     element: <ViewPage />
   }
 ])
