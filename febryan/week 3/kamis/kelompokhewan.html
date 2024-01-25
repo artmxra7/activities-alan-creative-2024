@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function groupAnimals(arr) {
+            let hasil = [];
+
+            // Mengelompokkan hewan berdasarkan huruf depannya
+            for (let i = 0; i < arr.length; i++) {
+                let hewan = arr[i];
+                let hurufDepan = hewan[0];
+
+                // Cari atau buat array untuk huruf depan
+                let indexHurufDepan = hasil.findIndex(group => group[0][0] === hurufDepan);
+
+                if (indexHurufDepan === -1) {
+                    hasil.push([hewan]);
+                } else {
+                    hasil[indexHurufDepan].push(hewan);
+                }
+            }
+
+            // Mengurutkan hasil berdasarkan huruf depan
+            hasil.sort((a, b) => a[0][0].localeCompare(b[0][0]));
+
+            return hasil;
+        }
+
+        // TEST CASES
+        console.log(groupAnimals(['cacing', 'ayam', 'kuda', 'anoa', 'kancil']));
+        // [ ['ayam', 'anoa'], ['cacing'], ['kuda', 'kancil'] ]
+        console.log(groupAnimals(['cacing', 'ayam', 'kuda', 'anoa', 'kancil', 'unta', 'cicak']));
+        // [ ['ayam', 'anoa'], ['cacing', 'cicak'], ['kuda', 'kancil'], ['unta'] ]
+    </script>
+</body>
+
+</html>
