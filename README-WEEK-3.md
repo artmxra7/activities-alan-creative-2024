@@ -75,7 +75,7 @@ Hari ini, kamu akan bermain dengan array dan bentuk selanjutnya, yaitu array mul
 ## Jumat
 
 
-![Header](assets/pokemon.png)
+![Header](modules/assets/pokemon.png)
 
 
 Selamat kamu sudah berada di tahap terakhir minggu ini, tugas di minggu ini adalah kamu diminta untuk membuat tampilan seperti gambar di atas
