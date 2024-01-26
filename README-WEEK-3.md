@@ -82,10 +82,12 @@ Selamat kamu sudah berada di tahap terakhir minggu ini, tugas di minggu ini adal
 
 Tugas :
 
-
-[[**Exercises 9 (Auto)**] Buatlah tampilan seperti gambar di atas menggunak ReactJs]
-[[**Exercises 10 (Auto)**] Buatkan tampilan detail saat jenis pokemon diklik yang menampilkan grafik data dari pokemon, profil pokemon dan foto pokemon]
-[[**Exercises 11 (Auto)**] API Pokemon : https://pokeapi.co/]
+- :anchor:
+Buatlah tampilan seperti gambar di atas menggunak ReactJs
+- :anchor:
+Buatkan tampilan detail saat jenis pokemon diklik yang menampilkan grafik data dari pokemon, profil pokemon dan foto pokemon
+- :anchor:
+API Pokemon : https://pokeapi.co/
 
 
 
