@@ -15,7 +15,7 @@ Tugas :
 - :anchor:
 [[**Exercises 2**] Buatkan respons api menggunakan laravel](modules/fungsi-crud-php.md)
 - :anchor:
-Setiap fungsi Create, Read, Update, Delete diuji oleh apliaksi Postman
+Setiap fungsi Create, Read, Update, Delete diuji oleh aplikasi Postman
 - :anchor:
 [[**Exercises 3**] Angka Prima](/modules/challenge-angka-prima.md)
 - :anchor:
