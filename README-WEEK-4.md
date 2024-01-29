@@ -1,4 +1,4 @@
-# Alan Creative Phase 0 Week 3: Arrays and Logics
+# Alan Creative Phase 0 Week 4: Mengenal Laravel
 
 
 Selamat sudah melalui kegiatan pekan keempat! Dua minggu pertama kita sudah memantapkan logika dalam JavaScript, dan setelah tiga minggu penuh bermain dengan console dan logika, minggu ini kita akan "refreshing" sejenak dan mempelajari framework php ya itu laravel!
