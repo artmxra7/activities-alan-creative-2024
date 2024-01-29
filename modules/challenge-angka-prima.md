@@ -12,9 +12,9 @@ function angkaPrima(angka) {
 }
 
 // TEST CASES
-var_dupm(angkaPrima(3)); // true
-var_dupm(angkaPrima(7)); // true
-var_dupm(angkaPrima(6)); // false
-var_dupm(angkaPrima(23)); // true
-var_dupm(angkaPrima(33)); // false
+var_dump(angkaPrima(3)); // true
+var_dump(angkaPrima(7)); // true
+var_dump(angkaPrima(6)); // false
+var_dump(angkaPrima(23)); // true
+var_dump(angkaPrima(33)); // false
 ```
