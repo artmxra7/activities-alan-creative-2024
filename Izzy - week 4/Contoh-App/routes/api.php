@@ -21,6 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('/siswaRead', [SiswaController::class, 'tampildata']);
+Route::get('/siswaSearch/{nik}', [SiswaController::class, 'cari']);
 Route::post('/siswaAdd', [SiswaController::class, 'tambahdata']);
 Route::put('/siswaUpdate', [SiswaController::class, 'updatedata']);
 Route::delete('/siswaDelete', [SiswaController::class, 'hapusdata']);

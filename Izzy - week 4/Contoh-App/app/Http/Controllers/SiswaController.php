@@ -82,4 +82,11 @@ class SiswaController extends Controller
             ]);
         }
     }
+
+    function cari(String $nik){
+        $find = Siswa::where('nik', $nik)->first();
+        return response()->json([
+            'data' => $find,
+        ]);
+    }
 }
