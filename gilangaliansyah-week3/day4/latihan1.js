@@ -5,7 +5,7 @@ function box(isi) {
         let kemasan = isi[i];
 
         if (kemasan % 3 === 0) {
-            wadah[2].push(kemasan);S
+            wadah[2].push(kemasan);
         } else if (kemasan % 2 === 0) {
             wadah[0].push(kemasan);
         } else {
