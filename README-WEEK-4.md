@@ -17,9 +17,9 @@ Tugas :
 - :anchor:
 Setiap fungsi Create, Read, Update, Delete diuji oleh apliaksi Postman
 - :anchor:
-[[**Exercises 1**] Angka Prima](/modules/challenge-angka-prima.md)
+[[**Exercises 3**] Angka Prima](/modules/challenge-angka-prima.md)
 - :anchor:
-[[**Exercises 3**] Selesaikan Hackerank 30 Days of Code 6](https://www.hackerrank.com/domains/tutorials/30-days-of-code))
+[[**Exercises 4**] Selesaikan Hackerank 30 Days of Code 6](https://www.hackerrank.com/domains/tutorials/30-days-of-code))
 
 
 
