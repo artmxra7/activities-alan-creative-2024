@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Looping Challenge</title>
+</head>
+<body>
+    <h2>Looping Challenge</h2>
+    
+    <div id="loopingOutput"></div>
+
+    <script>
+        // Looping pertama
+        var output = document.getElementById('loopingOutput');
+        output.innerHTML += '<p>LOOPING PERTAMA</p>';
+        for (var i = 1; i <= 20; i++) {
+            output.innerHTML += '<p>' + i + ' - I love coding</p>';
+            console.log(i + ' - I love coding');
+        }
+
+        // Looping kedua
+        output.innerHTML += '<p>LOOPING KEDUA</p>';
+        for (var j = 20; j >= 1; j--) {
+            output.innerHTML += '<p>' + j + ' - I will become fullstack developer</p>';
+            console.log(j + ' - I will become fullstack developer');
+        }
+    </script>
+</body>
+</html>

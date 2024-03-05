@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proxytia Game</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      text-align: center;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Proxytia Game</h2>
+    <form id="gameForm">
+      <div class="form-group">
+        <label for="nama">Nama:</label>
+        <input type="text" class="form-control" id="nama" placeholder="Masukkan nama" autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label for="peran">Pilih Role:</label>
+        <select class="form-control" id="peran">
+          <option value="">Pilih Role</option>
+          <option value="Knight">Knight</option>
+          <option value="Healer">Healer</option>
+          <option value="Mage">Mage</option>
+        </select>
+      </div>
+      <button type="button" class="btn btn-primary" onclick="cekPeran()">Mulai Game</button>
+    </form>
+    <div id="output" class="mt-4"></div>
+  </div>
+
+  <script>
+    function cekPeran() {
+      var nama = document.getElementById('nama').value;
+      var peran = document.getElementById('peran').value;
+      var outputDiv = document.getElementById('output');
+
+      if (nama === '') {
+        outputDiv.innerHTML = "<p class='text-danger'>Nama harus diisi!</p>";
+      } else {
+        if (peran === '') {
+          outputDiv.innerHTML = "<p class='text-warning'>Halo " + nama + ", Pilih rolemu untuk memulai game!</p>";
+        } else if (peran === 'Knight') {
+          outputDiv.innerHTML = "<p class='text-success'>Selamat datang di Dunia Proxytia, " + nama + "</p>" +
+                               "<p class='text-info'>Halo Knight " + nama + ", kamu dapat menyerang dengan senjatamu!</p>";
+        } else if (peran === 'Healer') {
+          outputDiv.innerHTML = "<p class='text-success'>Selamat datang di Dunia Proxytia, " + nama + "</p>" +
+                               "<p class='text-info'>Halo Healer " + nama + ", kamu akan membantu temanmu yang terluka.</p>";
+        } else if (peran === 'Mage') {
+          outputDiv.innerHTML = "<p class='text-success'>Selamat datang di Dunia Proxytia, " + nama + "</p>" +
+                               "<p class='text-info'>Halo Mage " + nama + ", ciptakan keajaiban yang membantu kemenanganmu!</p>";
+        } else {
+          outputDiv.innerHTML = "<p class='text-danger'>Peran yang kamu pilih tidak tersedia. Pilih antara Knight, Healer, atau Mage.</p>";
+        }
+      }
+    }
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

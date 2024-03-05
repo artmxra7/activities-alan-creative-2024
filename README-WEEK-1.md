@@ -46,6 +46,26 @@ tool untuk mengendalikan revisi dari kode yang telah kamu buat. Dengan menyelesa
 
 telah punya website kamu sendiri secara online!
 
+<<<<<<< HEAD
+=======
+Tugas :
+
+- 💪 [Membuat Komponen Banner Slider](/week-1/challenges/komponen-slider.md)
+
+- 💪 [Membuat Membuat Menu Navigasi](/week-1/challenges/menu-navigasi.md)
+
+-  TBD
+
+-  TBD
+
+-  TBD
+
+-  TBD
+
+-  TBD
+
+-  TBD
+>>>>>>> 3b5058e0df982cae7d7506fe933ad16fce2b7650
   
   
 
