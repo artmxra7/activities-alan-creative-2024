@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newton Second Lawton</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            transition: background-color 0.1s ease-in-out;
+            animation: changeColor 0.1s infinite alternate;
+        }
+
+        input{
+            transition: box-shadow 0.3s;
+            box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0);
+            border: 1px solid gray;
+            cursor: pointer;
+        }
+
+        input:hover,
+        input:focus{
+            animation: spin 0.2s infinite linear;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+        }
+
+        select{
+            transition: box-shadow 0.3s ease-in-out;
+            box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0);
+            border: 1px solid gray;
+        }
+
+        select:hover,
+        select:focus{
+            animation: border-hover 1s infinite linear;
+            animation: spin 0.2s infinite linear;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+        }
+
+        /* @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        } 
+
+        @keyframes changeColor {
+            0% {
+                background-color: #ff0000;
+            }
+            5% {
+                background-color: #ff6f00;
+
+            }
+            10% {
+                background-color: #ffc800;             
+
+            }
+            15% {
+                background-color: #fff700;             
+
+            }
+            20% {
+                background-color: #a6ff00;             
+
+            }
+            25% {
+                background-color: #48ff00;             
+
+            }
+            30% {
+                background-color: #00ff33;             
+
+            }
+            35% {
+                background-color: #00ff8c;             
+
+            }
+            40% {
+                background-color: #30ffbe;             
+
+            }
+            45% {
+                background-color: #40ffef;             
+
+            }
+            50% {
+                background-color: #42c6ff;             
+
+            }
+            55% {
+                background-color: #003cff;             
+
+            }
+            60% {
+                background-color: #4400ff;             
+
+            }
+            65% {
+                background-color: #7f00ff;             
+
+            }
+            70% {
+                background-color: #be00ff;             
+
+            }
+            75% {
+                background-color: #ef00ff;             
+
+            }
+            80% {
+                background-color: #ff00cc;             
+
+            }
+            85% {
+                background-color: #ff00a6;             
+
+            }
+            90% {
+                background-color: #ff0066;             
+
+            }
+            95% {
+                background-color: #ff0033;             
+
+            }
+            100% {
+                background-color: #ff0000;             
+
+            }
+        } */
+
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]{
+            -webkit-appearance: none;
+            appearance: none;
+            -moz-appearance: none;
+            margin: 0;
+            padding: 5px;
+            padding-left: 20px;
+            background-color: white;
+            border-radius: 25px;
+        }
+
+        p, h1, h2, h3, h4, h5, label, li{
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        div.container {
+            margin: 0 auto;
+            text-align: center;
+            border: 2px solid black;
+            border-radius: 25px;
+            padding: 20px;
+            background-color: #bce2eb;
+            box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0.5);
+            animation: spin 0.3s infinite linear;
+            animation: changeColor 0.1s infinite alternate;
+            transition: background-color 0.1s ease-in-out;
+        }
+
+        div.container > div {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            align-items: center;
+            animation: spins 0.3s infinite linear;
+        }
+
+        button.button-spin {
+            border-radius: 25px;
+            background-color: blue;
+            border: 2px black;
+            padding: 10px;
+            font-weight: 200;
+            color: white;
+            cursor: pointer;
+            transition: box-shadow 0.3s;
+            box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0);
+        }
+
+        .button-spin:hover,
+        .button-spin:focus{
+            animation: spin 0.5s infinite linear;
+            box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Rumus Newton Second Law</h1>
+        <div style="gap: 3px; font-weight: 600;">
+            <p>F</p>
+            <p>=</p>
+            <p>m</p>
+            <p>.</p>
+            <p>a</p>
+        </div>
+        <div style="text-align: start;">
+            <ul>
+                <li>F adalah gaya yang diberikan pada benda (dalam Newton)</li>
+                <li>m adalah massa benda (dalam kilogram)</li>
+                <li>a adalah percepatan benda (dalam meter per detik kuadrat)</li>
+            </ul>
+        </div>
+        <div>
+            <label for="MassaBenda">Masukkan Massa Benda </label>
+            <input type="number" id="MassaBenda" oninput="abovezero()">
+            <select name="Tipe Massa" id="tipemassa" style="padding: 5px; border-radius: 25px;">
+                <option value="gram">G</option>
+                <option value="Dekagram">Dag</option>
+                <option value="Hektagram">Hg</option>
+                <option value="Kilogram">Kg</option>
+                <option value="Ton">Ton</option>
+            </select>
+        </div>
+        <div>
+            <label for="Percepatan Benda">Masukkan Percepatan</label>
+            <input type="number" id="Percepatan Benda" oninput="abovezero()"> m/s
+        </div>
+        <div>
+            <button type="button" class="button-spin" onclick="answer()" style="font-family: Montserrat;">Jawab</button>
+        </div>
+        <p id="demo"></p>
+    </div>
+</body>
+<script>
+    const demo = document.getElementById('demo');
+
+    function abovezero() {
+        const percepatanInput = document.getElementById('Percepatan Benda');
+        const massaInput = document.getElementById('MassaBenda');
+        const percepatanValue = parseFloat(percepatanInput.value);
+        const massaValue = parseFloat(massaInput.value);
+
+        if(percepatanValue < 0){ 
+            percepatanInput.value = 0;
+        }
+        if(massaValue < 0){
+            massaInput.value = 0;  
+        }
+        
+    }
+    function answer() {
+        const tipemasa = document.getElementById("tipemassa").value;
+        var m = document.getElementById("MassaBenda").value;
+        var a = document.getElementById("Percepatan Benda").value;
+
+        if(a === "" && m === ""){
+            demo.style.color = "red";
+            demo.innerHTML = "Masukkan nilai untuk massa dan percepatan benda";
+        }
+        else if (a === "" || isNaN(a)) {
+            demo.style.color = "red";
+            demo.innerHTML = "Masukkan nilai yang valid untuk percepatan benda";
+        } else if(m === "" || isNaN(m)){
+            demo.style.color = "red";
+            demo.innerHTML = "Masukkan nilai yang valid untuk massa benda.";
+        } else {
+            m = parseFloat(m);
+
+            if (tipemasa == "gram") {
+                m = m / 1000;
+            } else if (tipemasa == "Dekagram") {
+                m = m / 100;
+            } else if (tipemasa == "Hektagram") {
+                m = m / 10;
+            } else if (tipemasa == "Kilogram") {
+                m = m;
+            } else if (tipemasa == "Ton") {
+                m = m * 1000;
+            }
+
+            var f = m * a;
+            demo.style.color = "black";
+            demo.innerHTML = "Jawaban : " + f + " N";
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proxytia</title>
+    <script src="proxytia.js"></script>
+    <style>
+        body{
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            animation: centerbody 1s ease-in-out;
+        }
+
+        h1, label, p{
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        input{
+            box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0);
+            border: 1px solid gray;
+            cursor: pointer;
+            -webkit-appearance: none;
+            appearance: none;
+            -moz-appearance: none;
+            margin: 0;
+            padding: 5px;
+            padding-left: 20px;
+            background-color: white;
+            border-radius: 25px;
+            transition: box-shadow 0.3s;
+        }
+
+        input:hover,
+        input:focus{
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+        }
+
+        select{
+            transition: box-shadow 0.3s ease-in-out;
+            box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0);
+            border: 1px solid gray;
+            padding: 5px;
+            text-align: center;
+            border-radius: 25px;
+        }
+
+        select:hover,
+        select:focus{
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+        }
+
+        div.container {
+            width: 500px;
+            margin: 0px auto;
+            text-align: center;
+            border: 2px solid black;
+            border-radius: 25px;
+            padding: 20px;
+            background-color: #bce2eb;
+            box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0.5);
+            animation: showDiv 0.5s ease-in-out;
+        }
+
+        div.container > div {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            align-items: center;
+        }
+
+        div.resp {
+            width: 500px;
+            margin: 0 auto;
+            text-align: center;
+            border: 2px solid black;
+            border-radius: 25px;
+            padding: 20px;
+            background-color: #bce2eb;
+            box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+
+        .button{
+            border-radius: 25px;
+            background-color: blue;
+            border: 2px black;
+            padding: 10px;
+            font-weight: 200;
+            color: white;
+            cursor: pointer;
+            transition: box-shadow 0.3s;
+            box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0);
+        }
+
+        .button:hover,
+        .button:focus{
+            box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes showDiv{
+            0% {
+                opacity: 0;
+            }
+            50%{
+                opacity: 0.5;
+            }
+            100%{
+                opacity: 1;
+            }
+
+        }
+
+        @keyframes centerbody{
+            0% {
+                margin: 0px auto;
+                height: 75vh;
+            }
+            100%{
+                margin: 0px auto;
+                height: 100vh;
+            }
+        }
+
+        @keyframes hideDiv{
+            0% {
+                opacity: 1;
+            }
+            50%{
+                opacity: 0.5;
+            }
+            100%{
+                opacity: 0;
+            }
+        }
+
+        @keyframes normalbody {
+            0% {
+                margin: 0px auto;
+                height: 100vh;
+            }
+            100%{
+                margin: 0px auto;
+                height: 75vh;
+            }
+        }
+    </style>
+</head>
+<body id="body">
+    <div class="container" id="container">
+        <h1 style="font-weight: bold;">Proxytia</h1>
+        <h5 id="errorresp"></h5>
+        <div><label for="Nama">Nama : </label><input type="text" name="Nama" placeholder="Masukkan Nama" id="Nama"></div>
+        <div>
+            <label for="Peran">Peran : </label>
+            <select name="Peran" id="Peran">
+                <option value="" selected disabled>--</option>
+                <option value="Ksatria">Ksatria</option>
+                <option value="Tabib">Tabib</option>
+                <option value="Penyihir">Penyihir</option>
+            </select>
+        </div>
+        <div>
+            <button type="button" class="button"
+            onclick="Getresponse()">
+            Yakin!
+            </button>
+        </div>
+    </div>
+    <div id="resp" class="resp">
+        
+    </div>
+</body>
+</html>

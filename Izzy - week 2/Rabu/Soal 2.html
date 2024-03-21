@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Looping</title>
+</head>
+<body>
+    <div>
+        <h1>Looping menggunakan While</h1>
+        <div>
+            <label for="angka1">Angka</label><input type="number" name="" id="angka1">
+        </div>
+        <button type="button" onclick="resp1()">Resp</button>
+    </div>
+    <div>
+        <h1>Looping menggunakan For</h1>
+        <div><label for="angka">Angka</label><input type="number" name="" id="angka2"></div>
+        <button type="button" onclick="resp2()">Resp</button>
+    </div>
+    <div>
+        <h1>Angka Ganjil dan Genap</h1>
+        <div><label for="angka3">Angka</label><input type="number" name="" id="angka3"></div>
+        <button type="button" onclick="resp3()">Resp</button>
+    </div>
+</body>
+
+<script>
+    function resp1(){
+        var i = parseInt(document.getElementById("angka1").value); 
+        var text = 'I love coding';
+        var text2 = 'I will become fullstack developer';
+        var result = '';
+
+        while (i <= 20) {
+            result += i + ' ' + text + '\n';
+            i += 2;
+        }
+
+        while (i > 2){
+            i -= 2;
+            result += i + ' ' + text2 + '\n';
+        }
+
+        console.log(result)
+        alert('While Loop : \n' + result);
+    }
+
+    function resp2(){
+
+        var i = parseInt(document.getElementById("angka2").value);
+        var text = 'I love coding';
+        var text2 = 'I will become fullstack developer';
+        var result = 'Looping Pertama \n';
+
+        for(i;i <= 20; i++){
+            result += i + ' ' + text + '\n';
+            
+        }
+
+        result += 'Looping kedua \n';
+
+        for(var i;i >= 1; i--){
+            if(i === 21){
+                i-=1;
+            }
+            result += i + ' ' + text2 + '\n';
+        }
+        console.log(result)
+
+        alert('For Loop : \n' + result);
+    }
+
+
+function resp3(){
+    var i = parseInt(document.getElementById("angka3").value);
+    var result = 'Perulangan pertambahan 1: \n';
+
+    for (i; i <= 100; i++) {
+        if (i % 2 === 0) {
+            result += `Counter Sekarang: ${i} GENAP \n`;
+        } else {
+            result += `Counter Sekarang: ${i} GANJIL \n`;
+        }
+    }
+
+    i = parseInt(document.getElementById("angka3").value);
+
+    result += 'Perulangan kelipatan 2 : \n';
+    for (i; i <= 100; i += 2) {
+        if (i % 3 === 0) {
+            result += i + ' KELIPATAN 3' + '\n';
+        }
+    }
+
+    i = parseInt(document.getElementById("angka3").value);
+
+    result += 'Perulangan kelipatan 5 : \n';
+    for (i; i <= 100; i += 5) {
+        if (i % 6 === 0) {
+            result += i + ' KELIPATAN 6' + '\n';
+        }
+    }
+
+    i = parseInt(document.getElementById("angka3").value);
+
+    result += 'Perulangan kelipatan 10 : \n';
+    for (i; i <= 100; i += 9) {
+        if (i % 10 === 0) {
+            result += i + ' KELIPATAN 10' + '\n';
+        }
+    }
+
+    console.log(result);
+    alert(result);
+
+}
+
+</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Coding</title>
+    <script src="LiveCoding.js" defer></script>
+</head>
+<body>
+    <center>
+    <h1>LiveCoding</h1>
+    <div>
+        <label for="word">Balik Kata </label><input type="text" name="" id="word">
+        <button type="button" onclick="Balikkata(document.getElementById('word').value)">Balik Kata</button>
+        <div id="resp1"></div>
+    </div>
+    <div>
+        <label for="">Bandingkan Angka </label>
+        <input type="number" name="" id="angka1">
+        <input type="number" name="" id="angka2">
+        <button type="button" onclick="BandingkanAngka(document.getElementById('angka1').value,document.getElementById('angka2').value)">Bandingkan Angka</button>
+        <div id="resp2"></div>
+    </div>
+    <div>
+        <label for="">Detik </label><input type="number" name="" id="detik">
+        <button type="button" onclick="konversiMenit(document.getElementById('detik').value)">Konversi Menit</button>
+        <div id="resp3"></div>
+    </div>
+    <div>
+        <label for="">X dan O</label><input type="text" name="" id="word2">
+        <button type="button" onclick="XdanO(document.getElementById('word2').value)">X dan O</button>
+        <div id="resp4"></div>
+    </div>
+</body>
+</html>

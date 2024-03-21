@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function bandingkanAngka(Angka1, Angka2){
+            return Angka1 < Angka2 ? 'true' : Angka1 > Angka2 ? 'false' : '-1';
+            
+        }
+
+        function balikKata(kata){
+            return kata.split('').reverse().join('');
+        }
+
+        function konversiMenit(detik){
+            const menit = Math.floor(detik / 60);
+            const sisaDetik = detik % 60;
+            const formatdetik = sisaDetik.toString().padStart(2, '0');
+            return `${menit} : ${formatdetik}`;
+        }
+
+        function XdanO(kata){
+            const X = kata.split('').filter(x => x.toLowerCase() === 'x').join('');
+            const O = kata.split('').filter(x => x.toLowerCase() === 'o').join('');
+            return X.length === O.length ? 'true' : 'false';
+        }
+        console.log(bandingkanAngka(5, 8));
+        console.log(bandingkanAngka(8, 5));
+        console.log(bandingkanAngka(5, 5));
+        console.log(balikKata('hello'));
+        console.log(konversiMenit(120))
+        console.log(XdanO('xox'))
+        console.log(XdanO('xxoo'))
+    </script>
+</body>
+</html>

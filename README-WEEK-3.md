@@ -72,23 +72,10 @@ Hari ini, kamu akan bermain dengan array dan bentuk selanjutnya, yaitu array mul
 
 
 
-## Jumat
-
-
-![Header](modules/assets/pokemon.png)
-
-
-Selamat kamu sudah berada di tahap terakhir minggu ini, tugas di minggu ini adalah kamu diminta untuk membuat tampilan seperti gambar di atas
+## Jumat - TBD
+TBD
 
 Tugas :
-
-- :anchor:
-Buatlah tampilan seperti gambar di atas menggunak ReactJs
-- :anchor:
-Buatkan tampilan detail saat jenis pokemon diklik yang menampilkan grafik data dari pokemon, profil pokemon dan foto pokemon
-- :anchor:
-API Pokemon : https://pokeapi.co/
-
 
 
 Jika ada hal yang perlu ditanyakan, langsung saja berdiskusi di grup ya.
